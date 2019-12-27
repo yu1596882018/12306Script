@@ -79,7 +79,9 @@
         });
 
         Promise.all(pros).then(res => {
-            startFunc();
+            setTimeout(() => {
+                startFunc();
+            }, 3000);
         });
     }
 })();
