@@ -27,48 +27,59 @@
     const superagent = require('superagent');
     const setHeaders = require('./setHeaders');
 
-    const timer = setInterval(async function () {
+    startFunc();
+
+    function startFunc () {
+        var pros = [];
         queryDates.forEach(queryDate => {
             toCiteCodes.forEach(async code => {
-                try {
-                    if (!flag) {
-                        const queryParams = {
-                            fromCiteCode: 'SZQ',
-                            toCiteCode: code.code,
-                            queryDate: queryDate
-                        };
+                pros.push(new Promise(async (resolve, reject) => {
+                    try {
+                        if (!flag) {
+                            const queryParams = {
+                                fromCiteCode: 'SZQ',
+                                toCiteCode: code.code,
+                                queryDate: queryDate
+                            };
 
-                        // 查询
-                        let queryZResult = await setHeaders(superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ'))
-                            .query({
-                                'leftTicketDTO.train_date': queryParams.queryDate,
-                                'leftTicketDTO.from_station': queryParams.fromCiteCode,
-                                'leftTicketDTO.to_station': queryParams.toCiteCode,
-                                purpose_codes: 'ADULT'
+                            // 查询
+                            let queryZResult = await setHeaders(superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ'))
+                                .query({
+                                    'leftTicketDTO.train_date': queryParams.queryDate,
+                                    'leftTicketDTO.from_station': queryParams.fromCiteCode,
+                                    'leftTicketDTO.to_station': queryParams.toCiteCode,
+                                    purpose_codes: 'ADULT'
+                                });
+                            // console.log('queryZResult', queryZResult.text);
+                            let queryZData = JSON.parse(queryZResult.text);
+                            let queryItem = queryZData.data.result.find(item => {
+                                let arr = item.split('|');
+                                return (code.checi ? code.checi.includes(arr[3]) : true) && arr[11] === 'Y' && arr[30] !== '无' && arr[31] !== '无';
                             });
-                        // console.log('queryZResult', queryZResult.text);
-                        let queryZData = JSON.parse(queryZResult.text);
-                        let queryItem = queryZData.data.result.find(item => {
-                            let arr = item.split('|');
-                            return (code.checi ? code.checi.includes(arr[3]) : true) && arr[11] === 'Y' && arr[30] !== '无' && arr[31] !== '无';
-                        });
-                        if (!queryItem) {
-                            console.log('无票', queryParams.queryDate + code.code);
+                            if (!queryItem) {
+                                console.log('无票', queryParams.queryDate + code.code);
+                            } else {
+                                setTimeout(() => {
+                                    console.log(queryItem, queryParams.queryDate + code.code + '有票');
+                                }, 2000)
+                                flag = true;
+                            }
+                            resolve();
                         } else {
-                            setTimeout(() => {
-                                console.log(queryItem, queryParams.queryDate + code.code + '有票');
-                            }, 2000)
-                            flag = true;
+                            console.log('结束');
+                            reject();
                         }
-                    } else {
-                        console.log('结束');
-                        clearInterval(timer);
+                    } catch (e) {
+                        reject();
+                        throw e;
                     }
-                } catch (e) {
-                    clearInterval(timer);
-                    throw e;
-                }
+
+                }));
             });
         });
-    }, 1000);
+
+        Promise.all(pros).then(res => {
+            startFunc();
+        });
+    }
 })();
