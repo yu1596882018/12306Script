@@ -2,7 +2,7 @@
     const superagent = require('superagent');
     const moment = require('moment');
     const setHeaders = require('./setHeaders');
-    const queryDate = '2020-01-03';
+    const queryDate = '2020-01-25';
     const queryParams = {
         fromCiteCode: 'SZQ',
         toCiteCode: 'LHA',
@@ -70,9 +70,8 @@
     const station_train_code = /'station_train_code':'([^']*)'/.exec(initDcResult.text)[1];
     const purpose_codes = /'purpose_codes':'([^']*)'/.exec(initDcResult.text)[1];
     const train_location = /'train_location':'([^']*)'/.exec(initDcResult.text)[1];
-    // const leftDetails = JSON.parse(`[${/'leftDetails': \[([^\]]*)\]/.exec(initDcResult.text)[1]}]`);
-    console.log(/'leftDetails': \[([^\]]*)\]/.exec(initDcResult.text))
-    console.log(globalRepeatSubmitToken, leftTicketStr, key_check_isChange, train_no, station_train_code);
+    const leftDetails = eval(`[${/'leftDetails':\[([^\]]*)\]/.exec(initDcResult.text)[1]}]`);
+    console.log(globalRepeatSubmitToken, leftTicketStr, key_check_isChange, train_no, station_train_code, leftDetails);
 
     // 提交订单
     let checkOrderInfoResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo'))

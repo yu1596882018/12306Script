@@ -2,7 +2,7 @@
   "name": "12306script",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "common.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
