@@ -1,15 +1,15 @@
 (async () => {
     const superagent = require('superagent');
+    const moment = require('moment');
     const setHeaders = require('./setHeaders');
-    const queryDate = '2020-01-22';
+    const queryDate = '2020-01-03';
     const queryParams = {
         fromCiteCode: 'SZQ',
         toCiteCode: 'LHA',
         fromCiteText: '深圳北',
         toCiteText: '隆回',
-        seatType: 'O'
+        seatType: 'O', // M一等座 O二等座
     };
-    const moment = require('moment');
 
     // 查询
     let queryZResult = await setHeaders(superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ'))
@@ -21,6 +21,15 @@
         });
     console.log('queryZResult', queryZResult.text);
     let queryZData = JSON.parse(queryZResult.text);
+    let queryItem = queryZData.data.result.find(item => {
+        let arr = item.split('|');
+        return arr[11] === 'Y';
+    });
+    if (!queryItem) {
+        console.log('无票');
+        return false;
+    }
+    let queryItemArr = queryItem.split('|');
 
     // 校验登录
     let checkUserResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/login/checkUser'))
@@ -37,9 +46,9 @@
     // 预订
     let submitOrderRequestResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/leftTicket/submitOrderRequest'))
         .send({
-            secretStr: decodeURIComponent(queryZData.data.result[0].split('|')[0]),
+            secretStr: decodeURIComponent(queryItemArr[0]),
             train_date: queryDate,
-            back_train_date: moment().format("YYYY-MM-DD "),
+            back_train_date: moment().format("YYYY-MM-DD"),
             tour_flag: 'dc',
             purpose_codes: 'ADULT',
             query_from_station_name: queryParams.fromCiteText,
@@ -48,7 +57,7 @@
         });
     console.log('submitOrderRequestResult', submitOrderRequestResult.text);
 
-    // 获取token
+    // 获取需要参数
     let initDcResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/initDc'))
         .send({
             _json_att: ''
@@ -61,6 +70,8 @@
     const station_train_code = /'station_train_code':'([^']*)'/.exec(initDcResult.text)[1];
     const purpose_codes = /'purpose_codes':'([^']*)'/.exec(initDcResult.text)[1];
     const train_location = /'train_location':'([^']*)'/.exec(initDcResult.text)[1];
+    // const leftDetails = JSON.parse(`[${/'leftDetails': \[([^\]]*)\]/.exec(initDcResult.text)[1]}]`);
+    console.log(/'leftDetails': \[([^\]]*)\]/.exec(initDcResult.text))
     console.log(globalRepeatSubmitToken, leftTicketStr, key_check_isChange, train_no, station_train_code);
 
     // 提交订单
