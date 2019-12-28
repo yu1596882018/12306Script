@@ -2,13 +2,13 @@
     const superagent = require('superagent');
     const moment = require('moment');
     const setHeaders = require('./setHeaders');
-    const queryDate = '2020-01-25';
+    const queryDate = '2020-01-07';
     const queryParams = {
         fromCiteCode: 'SZQ',
         toCiteCode: 'LHA',
         fromCiteText: '深圳北',
         toCiteText: '隆回',
-        seatType: 'O', // M一等座 O二等座
+        seatType: '', // M一等座 O二等座
     };
 
     // 查询
@@ -72,6 +72,27 @@
     const train_location = /'train_location':'([^']*)'/.exec(initDcResult.text)[1];
     const leftDetails = eval(`[${/'leftDetails':\[([^\]]*)\]/.exec(initDcResult.text)[1]}]`);
     console.log(globalRepeatSubmitToken, leftTicketStr, key_check_isChange, train_no, station_train_code, leftDetails);
+    leftDetails.forEach(item => {
+        if (/二等座/.test(item)) {
+            if (/无票/.test(item)) {
+                console.log('O无票');
+            } else {
+                console.log('O有票');
+                queryParams.seatType = 'O'
+            }
+        } else if (/一等座/.test(item)) {
+            if (/无票/.test(item)) {
+                console.log('M无票');
+            } else {
+                console.log('M有票');
+                queryParams.seatType !== 'O' && (queryParams.seatType = 'M');
+            }
+        }
+    });
+    console.log(queryParams.seatType);
+    if (!queryParams.seatType) {
+        return console.log('一等座，二等座无票');
+    }
 
     // 提交订单
     let checkOrderInfoResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo'))
@@ -92,6 +113,10 @@
         });
 
     console.log('checkOrderInfoResult', checkOrderInfoResult.text);
+    let checkOrderInfoData = JSON.parse(checkOrderInfoResult.text);
+    if (checkOrderInfoData.data.submitStatus === false) {
+        return false;
+    }
 
     // 查询余票
     let getQueueCountResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/getQueueCount'))
@@ -109,8 +134,10 @@
             REPEAT_SUBMIT_TOKEN: globalRepeatSubmitToken
         });
     console.log('getQueueCountResult', getQueueCountResult.text);
-
-    return false;
+    let getQueueCountData = JSON.parse(getQueueCountResult.text);
+    if (!getQueueCountData.status || +getQueueCountData.data.ticket <= 0) {
+        return false;
+    }
 
     // 确认座位
     let confirmSingleForQueueResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueue'))
@@ -168,4 +195,8 @@
             REPEAT_SUBMIT_TOKEN: globalRepeatSubmitToken
         });
     console.log('resultOrderForDcQueueResult', resultOrderForDcQueueResult.text);
+    let resultOrderForDcQueueData = JSON.parse(resultOrderForDcQueueResult.text);
+    if (resultOrderForDcQueueData.data.submitStatus) {
+        console.log('抢票成功');
+    }
 })();
