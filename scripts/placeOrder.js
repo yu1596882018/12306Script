@@ -1,35 +1,16 @@
-(async () => {
+// 下单占位
+module.exports = async (options) => {
     const superagent = require('superagent');
     const moment = require('moment');
     const setHeaders = require('./setHeaders');
-    const queryDate = '2020-01-07';
+    const queryDate = options.queryDate;
     const queryParams = {
-        fromCiteCode: 'SZQ',
-        toCiteCode: 'LHA',
-        fromCiteText: '深圳北',
-        toCiteText: '隆回',
+        fromCiteCode: options.fromCiteCode,
+        toCiteCode: options.toCiteCode,
+        fromCiteText: options.fromCiteText,
+        toCiteText: options.toCiteText,
         seatType: '', // M一等座 O二等座
     };
-
-    // 查询
-    let queryZResult = await setHeaders(superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ'))
-        .query({
-            'leftTicketDTO.train_date': queryDate,
-            'leftTicketDTO.from_station': queryParams.fromCiteCode,
-            'leftTicketDTO.to_station': queryParams.toCiteCode,
-            purpose_codes: 'ADULT'
-        });
-    console.log('queryZResult', queryZResult.text);
-    let queryZData = JSON.parse(queryZResult.text);
-    let queryItem = queryZData.data.result.find(item => {
-        let arr = item.split('|');
-        return arr[11] === 'Y';
-    });
-    if (!queryItem) {
-        console.log('无票');
-        return false;
-    }
-    let queryItemArr = queryItem.split('|');
 
     // 校验登录
     let checkUserResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/login/checkUser'))
@@ -46,7 +27,7 @@
     // 预订
     let submitOrderRequestResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/leftTicket/submitOrderRequest'))
         .send({
-            secretStr: decodeURIComponent(queryItemArr[0]),
+            secretStr: decodeURIComponent(options.secretStr),
             train_date: queryDate,
             back_train_date: moment().format("YYYY-MM-DD"),
             tour_flag: 'dc',
@@ -199,4 +180,4 @@
     if (resultOrderForDcQueueData.data.submitStatus) {
         console.log('抢票成功');
     }
-})();
+}
