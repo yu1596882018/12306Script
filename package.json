@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ./scripts/main.js",
-    "pm2": "pm2 start ./scripts/main.js"
+    "devGz": "node ./scripts/gzMain.js",
+    "pm2": "pm2 start ./scripts/main.js",
+    "pm2Gz": "pm2 start ./scripts/gzMain.js"
   },
   "author": "",
   "license": "ISC",
