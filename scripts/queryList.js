@@ -39,10 +39,10 @@ module.exports = async function (toCiteCodes, queryDates) {
                                 return (code.checi ? code.checi.includes(arr[3]) : true) && arr[11] === 'Y' && ((arr[30] && arr[30] !== '无') || (arr[31] && arr[31] !== '无'));
                             });
                             if (!queryItem) {
-                                console.log('无票', queryParams.queryDate + '-' + code.code);
+                                console.log('无票', queryParams.queryDate + '-' + code.fromCode + '-' + code.code);
                             } else {
                                 setTimeout(() => {
-                                    console.log(queryParams.queryDate + '-' + code.code + '有票', queryItem);
+                                    console.log(queryParams.queryDate + '-' + code.fromCode + '-' + code.code + '有票', queryItem);
                                 }, 2000)
                                 if (!flag) {
                                     // 下单占位
