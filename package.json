@@ -5,10 +5,10 @@
   "main": "temp/common.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node ./scripts/main.js",
-    "devGz": "node ./scripts/gzMain.js",
-    "pm2": "pm2 start ./scripts/main.js",
-    "pm2Gz": "pm2 start ./scripts/gzMain.js"
+    "devGz": "node ./scripts/mainGz.js",
+    "pm2Gz": "pm2 start ./scripts/mainGz.js",
+    "devSz": "node ./scripts/mainSz.js",
+    "pm2Sz": "pm2 start ./scripts/mainSz.js"
   },
   "author": "",
   "license": "ISC",

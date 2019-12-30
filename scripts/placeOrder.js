@@ -1,8 +1,10 @@
+const superagent = require('superagent');
+const moment = require('moment');
+const setHeaders = require('./setHeaders');
+const config = require('./config');
+
 // 下单占位
 module.exports = async (options) => {
-    const superagent = require('superagent');
-    const moment = require('moment');
-    const setHeaders = require('./setHeaders');
     const queryDate = options.queryDate;
     const queryParams = {
         fromCiteCode: options.fromCiteCode,
@@ -75,14 +77,15 @@ module.exports = async (options) => {
         return console.log('一等座，二等座无票');
     }
 
+    let currentUser = config.userList[userIndex]
+
     // 提交订单
     let checkOrderInfoResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo'))
         .send({
             cancel_flag: '2',
             bed_level_order_num: '000000000000000000000000000000',
-            passengerTicketStr:
-                `${queryParams.seatType},0,1,王鑫宇,1,4305***********07X,,N,e271857d7ae6ac3eb9bf28977ba10d922046fe2ff813868c510734672c2af342`,
-            oldPassengerStr: '王鑫宇,1,4305***********07X,1_',
+            passengerTicketStr: queryParams.seatType + currentUser.passengerTicketStr,
+            oldPassengerStr: currentUser.oldPassengerStr,
             tour_flag: 'dc',
             randCode: '',
             whatsSelect: '1',
@@ -163,10 +166,17 @@ module.exports = async (options) => {
             console.log('orderId', orderId = queryOrderWaitTimeData.data.orderId);
         } else {
             if (queryOrderWaitTimeData.data.queryOrderWaitTimeStatus) {
+                if (queryOrderWaitTimeData.data.errorcode === '0') {
+                    return console.log(queryOrderWaitTimeData.data.msg);
+                }
                 await arguments.callee();
             }
         }
     })();
+
+    if (!orderId) {
+        return console.log('结束，无成功订单');
+    }
 
     // 下单结果查询
     let resultOrderForDcQueueResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/resultOrderForDcQueue'))

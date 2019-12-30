@@ -36,7 +36,7 @@ module.exports = async function (toCiteCodes, queryDates) {
                             let queryZData = JSON.parse(queryZResult.text);
                             let queryItem = queryZData.data.result.find(item => {
                                 let arr = item.split('|');
-                                return (code.checi ? code.checi.includes(arr[3]) : true) && arr[11] === 'Y' && arr[30] && arr[30] !== '无' && arr[31] && arr[31] !== '无';
+                                return (code.checi ? code.checi.includes(arr[3]) : true) && arr[11] === 'Y' && ((arr[30] && arr[30] !== '无') || (arr[31] && arr[31] !== '无'));
                             });
                             if (!queryItem) {
                                 console.log('无票', queryParams.queryDate + '-' + code.code);
