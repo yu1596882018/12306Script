@@ -18,4 +18,4 @@ const queryDates = [
     '2020-01-21'
 ];
 
-queryList(toCiteCodes, queryDates);
+queryList(toCiteCodes, queryDates, 1000);

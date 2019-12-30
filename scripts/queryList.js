@@ -3,7 +3,7 @@
 const placeOrder = require('./placeOrder');
 const {queryCookie} = require('./config');
 
-module.exports = async function (toCiteCodes, queryDates) {
+module.exports = async function (toCiteCodes, queryDates, intervalTime = 3000) {
     let flag = false;
 
     const superagent = require('superagent');
@@ -75,7 +75,7 @@ module.exports = async function (toCiteCodes, queryDates) {
         Promise.all(pros).then(res => {
             setTimeout(() => {
                 startFunc();
-            }, 3000);
+            }, intervalTime);
         }, err => {
             console.log(err);
         });
