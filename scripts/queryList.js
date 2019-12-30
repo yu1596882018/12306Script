@@ -76,6 +76,8 @@ module.exports = async function (toCiteCodes, queryDates) {
             setTimeout(() => {
                 startFunc();
             }, 3000);
+        }, err => {
+            console.log(err);
         });
     }
 }
