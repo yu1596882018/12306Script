@@ -6,8 +6,10 @@ const Router = require('koa-router');
 const getCodeImage = require('./scripts/getCodeImage');
 const config = require('./scripts/config');
 const authCookie = require('./scripts/authCookie');
-const mainGz = require('./scripts/mainPx');
-let main = mainGz();
+const mainPx = require('./scripts/mainPx');
+const mainKm = require('./scripts/mainKm');
+let main = mainPx();
+let main2 = mainKm();
 require('./scripts/loopCheckUser');
 
 const App = new Koa();
@@ -32,7 +34,9 @@ router.get('/submitCode', async (ctx) => {
     ctx.body = await authCookie(ctx.query.answer);
     if (ctx.body.result_code === 0) {
         main.stop();
-        main = mainGz();
+        main2.stop();
+        main = mainPx();
+        main2 = mainKm();
     }
 });
 

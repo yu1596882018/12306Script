@@ -22,7 +22,7 @@ const toCiteCodes = [
 ];
 
 const queryDates = [
-    '2020-01-03'
+    '2020-01-20'
 ];
 
 module.exports = function () {

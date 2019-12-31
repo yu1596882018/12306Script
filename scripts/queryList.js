@@ -3,7 +3,7 @@
 const placeOrder = require('./placeOrder');
 const {queryCookie} = require('./config');
 
-module.exports = async function (toCiteCodes, queryDates, intervalTime = 3000) {
+module.exports = async function (toCiteCodes, queryDates, intervalTime = 3000, userIndex) {
     let flag = false;
 
     const superagent = require('superagent');
@@ -53,7 +53,8 @@ module.exports = async function (toCiteCodes, queryDates, intervalTime = 3000) {
                                         fromCiteText: queryZData.data.map[queryParams.fromCiteCode] ||
                                             code.fromCiteText,
                                         toCiteText: queryZData.data.map[queryParams.toCiteCode] || code.toCiteText,
-                                        secretStr: queryItem.split('|')[0]
+                                        secretStr: queryItem.split('|')[0],
+                                        userIndex: userIndex
                                     });
                                 }
                                 flag = true;
