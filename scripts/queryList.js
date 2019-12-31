@@ -80,4 +80,10 @@ module.exports = async function (toCiteCodes, queryDates, intervalTime = 3000) {
             console.log(err);
         });
     }
+
+    return {
+        stop () {
+            flag = true;
+        }
+    }
 }

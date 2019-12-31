@@ -130,9 +130,8 @@ module.exports = async (options) => {
     // 确认座位
     let confirmSingleForQueueResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueue'))
         .send({
-            passengerTicketStr:
-                `${queryParams.seatType},0,1,王鑫宇,1,4305***********07X,,N,e271857d7ae6ac3eb9bf28977ba10d922046fe2ff813868c510734672c2af342`,
-            oldPassengerStr: '王鑫宇,1,4305***********07X,1_',
+            passengerTicketStr: queryParams.seatType + currentUser.passengerTicketStr,
+            oldPassengerStr: currentUser.oldPassengerStr,
             randCode: '',
             purpose_codes: purpose_codes,
             key_check_isChange: key_check_isChange,
@@ -147,6 +146,9 @@ module.exports = async (options) => {
             REPEAT_SUBMIT_TOKEN: globalRepeatSubmitToken
         });
     console.log('confirmSingleForQueueResult', confirmSingleForQueueResult.text);
+    if (!confirmSingleForQueueResult.body.data.submitStatus) {
+        return console.log(confirmSingleForQueueResult.body.data.errMsg);
+    }
 
     // 轮询获取订单
     let orderId = null;
