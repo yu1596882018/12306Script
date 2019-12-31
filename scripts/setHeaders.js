@@ -1,4 +1,4 @@
-const {userCookie} = require('./config');
+const config = require('./config');
 
 /**
  * 设置请求头
@@ -10,7 +10,7 @@ module.exports = (xhr, queryCookie) => {
     xhr.set('Accept-Encoding', 'gzip, deflate, br');
     xhr.set('Accept-Language', 'zh-CN,zh;q=0.9,en;q=0.8');
     xhr.set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    xhr.set('Cookie', queryCookie || userCookie);
+    xhr.set('Cookie', queryCookie || config.userCookie);
     xhr.set('Host', 'kyfw.12306.cn');
     xhr.set('Origin', 'https://kyfw.12306.cn');
     xhr.set('Referer', 'https://kyfw.12306.cn/otn/confirmPassenger/initDc');

@@ -18,4 +18,6 @@ const queryDates = [
     '2020-01-21'
 ];
 
-queryList(toCiteCodes, queryDates, 1000);
+module.exports = function () {
+    queryList(toCiteCodes, queryDates, 1000);
+}

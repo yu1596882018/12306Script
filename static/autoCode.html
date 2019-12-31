@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>校验验证码</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #J-loginImg {
+            width: 300px;
+            height: 188px;
+            border: none;
+            padding: 0;
+            margin: 0;
+            display: inline;
+        }
+
+        #J-passCodeCoin {
+            position: relative;
+            width: 300px;
+            height: 188px;
+        }
+
+        .lgcode-active {
+            position: absolute;
+            z-index: 3;
+            width: 27px;
+            height: 27px;
+            font-size: 0;
+            background: url(https://kyfw.12306.cn/otn/resources/images/login/captcha.png);
+            background-repeat: no-repeat;
+            background-position: 0 -96px;
+        }
+    </style>
+</head>
+<body>
+<div id="J-passCodeCoin">
+    <img id="J-loginImg">
+</div>
+<input type="button" id="submit" value="提交">
+<input type="button" id="refresh" value="刷新">
+
+<script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+<script>
+    document.getElementById('J-passCodeCoin').onclick = function (e) {
+        if (e.offsetY < 30) {
+            return console.log('不可点区域');
+        }
+
+        var _this = this;
+        var dom = document.createElement('div');
+        dom.className = 'lgcode-active';
+        dom.setAttribute('randcode', e.offsetX + ',' + (e.offsetY - 30));
+        dom.style = 'top: ' + (e.offsetY - 30 + 16) + 'px; left: ' + (e.offsetX - 13) + 'px;';
+        dom.onclick = function (e) {
+            _this.removeChild(this);
+            e.stopPropagation();
+            return false;
+        }
+        this.appendChild(dom);
+    };
+
+    document.getElementById('submit').onclick = function (e) {
+        var doms = document.getElementsByClassName('lgcode-active');
+        var arr = [];
+        for (var i = 0; i < doms.length; i++) {
+            arr.push(doms[i].getAttribute('randcode'));
+        }
+
+        axios({
+            method: 'get',
+            url: '/submitCode?answer=' + arr.join(',')
+        }).then(res => {
+            alert(res.data.result_message);
+        });
+    };
+
+
+    function getQueryVariable (variable) { // 获取url参数
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+
+    var key = getQueryVariable('key');
+
+    document.getElementById('refresh').onclick = function (e) {
+        var doms = document.getElementsByClassName('lgcode-active');
+        for (var i = 0; i < doms.length; i++) {
+            document.getElementById('J-passCodeCoin').removeChild(doms[i]);
+        }
+        axios({
+            method: 'get',
+            url: '/refreshCode'
+        }).then(res => {
+            getCode(res.data);
+        });
+    };
+
+    getCode(key);
+
+    function getCode (k) {
+        axios({
+            method: 'get',
+            url: '/getCode?key=' + k
+        }).then(res => {
+            console.log(res);
+            document.getElementById('J-loginImg').src = 'data:image/jpg;base64,' + res.data;
+        });
+    }
+</script>
+</body>
+</html>

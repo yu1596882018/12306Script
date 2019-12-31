@@ -2,6 +2,7 @@ const superagent = require('superagent');
 const moment = require('moment');
 const setHeaders = require('./setHeaders');
 const config = require('./config');
+const getCodeImage = require('./getCodeImage');
 
 // 下单占位
 module.exports = async (options) => {
@@ -23,6 +24,9 @@ module.exports = async (options) => {
     let checkUserData = JSON.parse(checkUserResult.text);
     if (!checkUserData.data.flag) {
         console.log('cookie失效');
+        getCodeImage({
+            sendmail: true
+        });
         return false;
     }
 
