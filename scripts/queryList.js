@@ -3,7 +3,7 @@
 const placeOrder = require('./placeOrder');
 const {queryCookie} = require('./config');
 
-module.exports = async function (toCiteCodes, queryDates, intervalTime = 3000, userIndex) {
+module.exports = function (toCiteCodes, queryDates, intervalTime = 3000, userIndex) {
     let flag = false;
 
     const superagent = require('superagent');
