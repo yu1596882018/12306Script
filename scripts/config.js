@@ -31,6 +31,16 @@ module.exports = {
         ],
         toCiteCodes: [
             {
+                fromCode: 'KAQ',
+                fromCiteText: '怀化南',
+                code: 'IOQ',
+                toCiteText: '深圳北',
+                checi: [
+                    'G6173',
+                    'G6141'
+                ]
+            },
+            {
                 fromCode: 'LHA',
                 fromCiteText: '隆回',
                 code: 'IOQ',
