@@ -22,10 +22,14 @@ module.exports = {
         {
             passengerTicketStr: ',0,1,梅俊涛,1,5303***********216,,N,741370a86e54a6822104c78c9510d588e9282b975fa46c0fafab52d31fa6ef84',
             oldPassengerStr: '梅俊涛,1,5303***********216,1_'
+        },
+        {
+            passengerTicketStr: ',0,1,李俊,1,4310***********415,,N,ded9fe206d7fce7a8fdb4a4a1410c524f237ed8bd15f2d8708e8fecc11e6c297',
+            oldPassengerStr: '李俊,1,4310***********415,1_'
         }
     ],
     codeImages: {},
-    queryOptions: {
+    /*queryOptions: {
         queryDates: [
             '2020-01-31'
         ],
@@ -56,6 +60,23 @@ module.exports = {
                     'G6141'
                 ]
             },
+        ]
+    }*/
+    queryOptions: {
+        queryDates: [
+            '2020-01-20'
+        ],
+        toCiteCodes: [
+            {
+                fromCode: 'BJP',
+                fromCiteText: '北京西',
+                code: 'CSQ',
+                toCiteText: '长沙南',
+                checi: [
+                    'G403',
+                    'G79'
+                ]
+            }
         ]
     }
 }

@@ -8,7 +8,7 @@ const config = require('./scripts/config');
 const authCookie = require('./scripts/authCookie');
 const queryList = require('./scripts/queryList');
 require('./scripts/loopCheckUser');
-let querySample = queryList(config.queryOptions.toCiteCodes, config.queryOptions.queryDates, 1000, 0);
+let querySample = queryList(config.queryOptions.toCiteCodes, config.queryOptions.queryDates, 1000, 5);
 
 const App = new Koa();
 
@@ -32,7 +32,7 @@ router.get('/submitCode', async (ctx) => {
     ctx.body = await authCookie(ctx.query.answer);
     if (ctx.body.result_code === 0) {
         querySample.stop();
-        querySample = queryList(config.queryOptions.toCiteCodes, config.queryOptions.queryDates, 1000, 0);
+        querySample = queryList(config.queryOptions.toCiteCodes, config.queryOptions.queryDates, 1000, 5);
     }
 });
 
