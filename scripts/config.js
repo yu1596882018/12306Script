@@ -24,5 +24,28 @@ module.exports = {
             oldPassengerStr: '梅俊涛,1,5303***********216,1_'
         }
     ],
-    codeImages: {}
+    codeImages: {},
+    queryOptions: {
+        queryDates: [
+            '2020-01-31'
+        ],
+        toCiteCodes: [
+            {
+                fromCode: 'SYQ',
+                fromCiteText: '邵阳',
+                code: 'IOQ',
+                toCiteText: '深圳北',
+                checi: [
+                    'G6173',
+                    'G6141'
+                ]
+            },
+            {
+                fromCode: 'LHA',
+                fromCiteText: '隆回',
+                code: 'IOQ',
+                toCiteText: '深圳北'
+            },
+        ]
+    }
 }
