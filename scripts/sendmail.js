@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-module.exports = (key) => {
+module.exports = (key, opt = {}) => {
 // async..await is not allowed in global scope, must use a wrapper
     async function main () {
         // Generate test SMTP service account from ethereal.email
@@ -23,7 +23,8 @@ module.exports = (key) => {
             from: '"烟竹" <1596882018@qq.com>', // sender address
             to: "1596882018@qq.com", // list of receivers
             subject: "校验验证码", // Subject line
-            html: `<a href="http://www.xinyu8.wang/autoCode.html?key=${key}">前往验证</a>` // html body
+            // html: `<a href="http://localhost:8899/autoCode.html?key=${key}">${opt.flag ? opt.flag : '登录状态失效，'}前往验证</a>` // html body
+            html: `<a href="http://www.xinyu8.wang/autoCode.html?key=${key}">${opt.flag ? opt.flag : '登录状态失效，'}前往验证</a>` // html body
         });
 
         console.log("Message sent: %s", info.messageId);

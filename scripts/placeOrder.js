@@ -25,7 +25,8 @@ module.exports = async (options) => {
     if (!checkUserData.data.flag) {
         console.log('cookie失效');
         getCodeImage({
-            sendmail: true
+            sendmail: true,
+            flag: `${options.fromCiteText}-${options.toCiteText}查询到余票，`
         });
         return false;
     }

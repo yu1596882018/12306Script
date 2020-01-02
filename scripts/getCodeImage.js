@@ -19,7 +19,7 @@ module.exports = async (opt) => {
     let key = uuidv1();
     config.codeImages[key] = captchaResult.body.image;
     if (opt && opt.sendmail) {
-        sendmail(key);
+        sendmail(key, opt);
     }
     return key;
 }
