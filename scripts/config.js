@@ -31,6 +31,12 @@ module.exports = {
         ],
         toCiteCodes: [
             {
+                fromCode: 'LHA',
+                fromCiteText: '隆回',
+                code: 'IOQ',
+                toCiteText: '深圳北'
+            },
+            {
                 fromCode: 'SYQ',
                 fromCiteText: '邵阳',
                 code: 'IOQ',
@@ -39,12 +45,6 @@ module.exports = {
                     'G6173',
                     'G6141'
                 ]
-            },
-            {
-                fromCode: 'LHA',
-                fromCiteText: '隆回',
-                code: 'IOQ',
-                toCiteText: '深圳北'
             },
         ]
     }

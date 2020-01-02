@@ -82,7 +82,7 @@ module.exports = async (options) => {
         return console.log('一等座，二等座无票');
     }
 
-    let currentUser = config.userList[options.userIndex || config.userIndex];
+    let currentUser = config.userList[options.userIndex === undefined ? config.userIndex : options.userIndex];
 
     // 提交订单
     let checkOrderInfoResult = await setHeaders(superagent.post('https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo'))
