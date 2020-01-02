@@ -26,5 +26,5 @@ const queryDates = [
 ];
 
 module.exports = function () {
-    return queryList(toCiteCodes, queryDates, 1000);
+    return queryList(toCiteCodes, queryDates, 3000);
 }
