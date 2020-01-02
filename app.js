@@ -7,7 +7,7 @@ const getCodeImage = require('./scripts/getCodeImage');
 const config = require('./scripts/config');
 const authCookie = require('./scripts/authCookie');
 const mainPx = require('./scripts/mainPx');
-const mainKm = require('./scripts/mainKm');
+const mainKm = require('./scripts/mainBj');
 let main = mainPx();
 let main2 = mainKm();
 require('./scripts/loopCheckUser');

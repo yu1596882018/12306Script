@@ -6,18 +6,6 @@ const toCiteCodes = [
         fromCiteText: '深圳北',
         code: 'KOM',
         toCiteText: '昆明南'
-    },
-    {
-        fromCode: 'IZQ',
-        fromCiteText: '广州南',
-        code: 'QBM',
-        toCiteText: '曲靖北'
-    },
-    {
-        fromCode: 'IZQ',
-        fromCiteText: '广州南',
-        code: 'KMM',
-        toCiteText: '昆明'
     }
 ];
 
