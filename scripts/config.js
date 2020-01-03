@@ -80,7 +80,7 @@ module.exports = {
         ]
     },*/
     queryOptions: {
-        // intervalTime: 1000,
+        intervalTime: 1000,
         queryListParams: [
             {
                 userIndex: 5,
@@ -98,6 +98,27 @@ module.exports = {
                             'G403',
                             'G79'
                         ]
+                    }
+                ]
+            },
+            {
+                userIndex: 3,
+                isEnd: false,
+                queryDates: [
+                    '2020-01-20'
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'IOQ',
+                        fromCiteText: '深圳北',
+                        code: 'PXG',
+                        toCiteText: '萍乡北'
+                    },
+                    {
+                        fromCode: 'IOQ',
+                        fromCiteText: '深圳北',
+                        code: 'CWQ',
+                        toCiteText: '长沙南'
                     }
                 ]
             }
