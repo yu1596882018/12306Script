@@ -3,9 +3,10 @@ const moment = require('moment');
 const setHeaders = require('./setHeaders');
 const config = require('./config');
 const getCodeImage = require('./getCodeImage');
+const utils = require('./utils');
 
 // 下单占位
-module.exports = async (options) => {
+module.exports = async (options, configItem) => {
     const queryDate = options.queryDate;
     const queryParams = {
         fromCiteCode: options.fromCiteCode,
@@ -195,6 +196,11 @@ module.exports = async (options) => {
     console.log('resultOrderForDcQueueResult', resultOrderForDcQueueResult.text);
     let resultOrderForDcQueueData = JSON.parse(resultOrderForDcQueueResult.text);
     if (resultOrderForDcQueueData.data.submitStatus) {
-        console.log('抢票成功');
+        console.log(`${options.queryDate}-${options.fromCiteText}-${options.toCiteText}，抢票成功`);
+        configItem.isEnd = true;
+        // 抢票成功邮件通知
+        utils.sendMail({
+            subject: `${options.queryDate}-${options.fromCiteText}-${options.toCiteText}，抢票成功`
+        });
     }
 }

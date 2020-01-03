@@ -1,4 +1,5 @@
 const config = require('./config');
+const nodemailer = require("nodemailer");
 
 module.exports = {
     setCookies (params) {
@@ -18,5 +19,29 @@ module.exports = {
         config.userCookie = Object.keys(cookieObj).map(key => {
             return `${key}=${cookieObj[key]}`;
         }).join('; ');
+    },
+    sendMail (opts) {
+        async function main () {
+            let testAccount = await nodemailer.createTestAccount();
+            let transporter = nodemailer.createTransport({
+                host: "smtp.qq.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: '1596882018@qq.com',
+                    pass: 'frlogvlerobwfhfe'
+                }
+            });
+
+            let info = await transporter.sendMail(Object.assign({
+                from: '"烟竹" <1596882018@qq.com>',
+                to: "1596882018@qq.com"
+            }, opts));
+
+            console.log("Message sent: %s", info.messageId);
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        }
+
+        main().catch(console.error);
     }
 }

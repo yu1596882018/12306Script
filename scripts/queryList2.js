@@ -41,7 +41,7 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
                                             toCiteText: citeMap[queryOpt.toCode] || queryOpt.toCiteText,
                                             secretStr: resultItem.data[0],
                                             userIndex: item.userIndex
-                                        });
+                                        }, item);
                                         flog = true;
                                     }
                                     reject(new Error('有'));
