@@ -121,7 +121,42 @@ module.exports = {
                         toCiteText: '长沙'
                     }
                 ]
-            }
+            },
+            {
+                userIndex: 0,
+                isEnd: false,
+                queryDates: [
+                    '2020-02-01'
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'KAQ',
+                        fromCiteText: '怀化南',
+                        toCode: 'IOQ',
+                        toCiteText: '深圳北',
+                        checi: [
+                            'G6173',
+                            'G6141'
+                        ]
+                    },
+                    {
+                        fromCode: 'LHA',
+                        fromCiteText: '隆回',
+                        toCode: 'IOQ',
+                        toCiteText: '深圳北'
+                    },
+                    {
+                        fromCode: 'SYQ',
+                        fromCiteText: '邵阳',
+                        toCode: 'IOQ',
+                        toCiteText: '深圳北',
+                        checi: [
+                            'G6173',
+                            'G6141'
+                        ]
+                    }
+                ]
+            },
         ]
     }
 }
