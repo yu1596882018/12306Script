@@ -6,9 +6,9 @@ const Router = require('koa-router');
 const getCodeImage = require('./scripts/getCodeImage');
 const config = require('./scripts/config');
 const authCookie = require('./scripts/authCookie');
-const queryList = require('./scripts/queryList');
+const queryList = require('./scripts/queryList2');
 require('./scripts/loopCheckUser');
-let querySample = queryList(config.queryOptions.toCiteCodes, config.queryOptions.queryDates, 1000, 5);
+let querySample = queryList(config.queryOptions);
 
 const App = new Koa();
 
@@ -32,7 +32,7 @@ router.get('/submitCode', async (ctx) => {
     ctx.body = await authCookie(ctx.query.answer);
     if (ctx.body.result_code === 0) {
         querySample.stop();
-        querySample = queryList(config.queryOptions.toCiteCodes, config.queryOptions.queryDates, 1000, 5);
+        querySample = queryList(config.queryOptions);
     }
 });
 

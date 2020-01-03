@@ -3,7 +3,7 @@
 const placeOrder = require('./placeOrder');
 const {queryCookie} = require('./config');
 
-module.exports = function (toCiteCodes, queryDates, intervalTime = 3000, userIndex) {
+module.exports = function ({QLP: queryListPrams, intervalTime}) {
     let flag = false;
 
     const superagent = require('superagent');
@@ -76,7 +76,7 @@ module.exports = function (toCiteCodes, queryDates, intervalTime = 3000, userInd
         Promise.all(pros).then(res => {
             setTimeout(() => {
                 startFunc();
-            }, intervalTime);
+            }, intervalTime || 3000);
         }, err => {
             console.log(err);
         });

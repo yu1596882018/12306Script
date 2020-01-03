@@ -62,7 +62,7 @@ module.exports = {
             },
         ]
     }*/
-    queryOptions: {
+    /*queryOptions: {
         queryDates: [
             '2020-01-20'
         ],
@@ -75,6 +75,30 @@ module.exports = {
                 checi: [
                     'G403',
                     'G79'
+                ]
+            }
+        ]
+    },*/
+    queryOptions: {
+        // intervalTime: 1000,
+        queryListParams: [
+            {
+                userIndex: 5,
+                isEnd: false,
+                queryDates: [
+                    '2020-01-20'
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'BJP',
+                        fromCiteText: '北京西',
+                        toCode: 'CSQ',
+                        toCiteText: '长沙南',
+                        checi: [
+                            'G403',
+                            'G79'
+                        ]
+                    }
                 ]
             }
         ]
