@@ -26,7 +26,7 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
                                         'leftTicketDTO.to_station': queryOpt.toCode,
                                         purpose_codes: 'ADULT'
                                     });
-
+                                console.log(queryZResult.body);
                                 // 筛选最优车次
                                 let resultItem = filterItem(queryZResult.body.data.result, queryOpt);
                                 if (resultItem) {

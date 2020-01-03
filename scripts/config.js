@@ -109,16 +109,16 @@ module.exports = {
                 ],
                 citeCodes: [
                     {
-                        fromCode: 'IOQ',
-                        fromCiteText: '深圳北',
-                        code: 'PXG',
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'PXG',
                         toCiteText: '萍乡北'
                     },
                     {
-                        fromCode: 'IOQ',
-                        fromCiteText: '深圳北',
-                        code: 'CWQ',
-                        toCiteText: '长沙南'
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'CSQ',
+                        toCiteText: '长沙'
                     }
                 ]
             }
