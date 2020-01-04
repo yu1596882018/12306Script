@@ -129,7 +129,6 @@ module.exports = {
                     '2020-01-17',
                     '2020-01-18',
                     '2020-01-19',
-                    '2020-01-20',
                 ],
                 citeCodes: [
                     {
@@ -157,9 +156,58 @@ module.exports = {
                             'G6174',
                             'G6142'
                         ]
+                    },
+                    {
+                        fromCode: 'IZQ',
+                        fromCiteText: '广州南',
+                        toCode: 'LHA',
+                        toCiteText: '隆回'
                     }
                 ]
             },
+            {
+                userIndex: 0,
+                isEnd: false,
+                queryDates: [
+                    '2020-01-31',
+                    '2020-02-01',
+                    '2020-02-02',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'KAQ',
+                        fromCiteText: '怀化南',
+                        toCode: 'IOQ',
+                        toCiteText: '深圳北',
+                        checi: [
+                            'G6173',
+                            'G6141'
+                        ]
+                    },
+                    {
+                        fromCode: 'LHA',
+                        fromCiteText: '隆回',
+                        toCode: 'IOQ',
+                        toCiteText: '深圳北'
+                    },
+                    {
+                        fromCode: 'SYQ',
+                        fromCiteText: '邵阳',
+                        toCode: 'IOQ',
+                        toCiteText: '深圳北',
+                        checi: [
+                            'G6173',
+                            'G6141'
+                        ]
+                    },
+                    {
+                        fromCode: 'LHA',
+                        fromCiteText: '隆回',
+                        toCode: 'IZQ',
+                        toCiteText: '广州南'
+                    }
+                ]
+            }
         ]
     }
 }
