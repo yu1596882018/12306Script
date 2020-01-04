@@ -60,7 +60,7 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
 
                 Promise.all(pros).then(res => {
                     if (!isStopFlog) {
-                        setTimeout(queryFunc, intervalTime || 3000);
+                        setTimeout(queryFunc, intervalTime || 5000);
                     }
                 }, err => {
                     throw err;

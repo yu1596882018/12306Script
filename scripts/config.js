@@ -1,6 +1,21 @@
+const redis = require('redis');
+const redisDb = redis.createClient(6379, 'localhost');
+let userCookie = 'JSESSIONID=9032181F66FBA8B98C78B038B2FFC61D; tk=bzUFTKw-tnQ12SxSSH7z4i6qdlecMqE9AA6tVxjekk0xhy1y0; _jc_save_wfdc_flag=dc; BIGipServerotn=535298314.50210.0000; RAIL_EXPIRATION=1578413544697; RAIL_DEVICEID=IpwYVKNMh6Tizi15NP58IE-ZKG7UzuFqxsvybQG0VQ5h3ni6cPbjVWjQk2o2wuTWDhgbPx0-DgveztEB7XX1X0NY6sYbUBNy9bSddRWJbBfYzRUAsVmdXyS-UGJcaFdmdCWHwieKKQqJ3VEiSMTPpj7hNXBM_CP3; BIGipServerpassport=921174282.50215.0000; route=c5c62a339e7744272a54643b3be5bf64; _jc_save_toDate=2020-01-04; _jc_save_fromStation=%u90B5%u9633%2CSYQ; _jc_save_toStation=%u6DF1%u5733%u5317%2CIOQ; _jc_save_fromDate=2020-01-04';
+
+redisDb.get('userCookie', function (err, v) {
+    v && (userCookie = v);
+});
+
 module.exports = {
+    redisDb,
     queryCookie: 'JSESSIONID=9A14BCDDEEBAA3F8C1523E93030752E6; route=6f50b51faa11b987e576cdb301e545c4; BIGipServerotn=3772186890.24610.0000; _jc_save_fromStation=%u5317%u4EAC%2CBJP; _jc_save_toStation=%u957F%u6C99%2CCSQ; _jc_save_fromDate=2020-01-02; _jc_save_toDate=2020-01-02; _jc_save_wfdc_flag=dc; RAIL_EXPIRATION=1578230858671; RAIL_DEVICEID=ofBYBSqCHFoBVY_ziHto3hT-TeGAyC1zz_Ltx9YSh_n70MEAipVDgiH5jetjjbBZiHqdrRNwfuTDqbXdE9c1fQMS4615qcWtyksnluou3wtHEr0_JaOPxUybxIBeUgjXEATxDU9HEAkom0R-SoTYnIRMIxlMuu5G',
-    userCookie: 'JSESSIONID=9032181F66FBA8B98C78B038B2FFC61D; tk=bzUFTKw-tnQ12SxSSH7z4i6qdlecMqE9AA6tVxjekk0xhy1y0; _jc_save_wfdc_flag=dc; BIGipServerotn=535298314.50210.0000; RAIL_EXPIRATION=1578413544697; RAIL_DEVICEID=IpwYVKNMh6Tizi15NP58IE-ZKG7UzuFqxsvybQG0VQ5h3ni6cPbjVWjQk2o2wuTWDhgbPx0-DgveztEB7XX1X0NY6sYbUBNy9bSddRWJbBfYzRUAsVmdXyS-UGJcaFdmdCWHwieKKQqJ3VEiSMTPpj7hNXBM_CP3; BIGipServerpassport=921174282.50215.0000; route=c5c62a339e7744272a54643b3be5bf64; _jc_save_toDate=2020-01-04; _jc_save_fromStation=%u90B5%u9633%2CSYQ; _jc_save_toStation=%u6DF1%u5733%u5317%2CIOQ; _jc_save_fromDate=2020-01-04',
+    set userCookie (value) {
+        redisDb.set('userCookie', value);
+        userCookie = value;
+    },
+    get userCookie () {
+        return userCookie;
+    },
     userIndex: 3,
     userList: [
         {
@@ -29,56 +44,6 @@ module.exports = {
         }
     ],
     codeImages: {},
-    /*queryOptions: {
-        queryDates: [
-            '2020-01-31'
-        ],
-        toCiteCodes: [
-            {
-                fromCode: 'KAQ',
-                fromCiteText: '怀化南',
-                code: 'IOQ',
-                toCiteText: '深圳北',
-                checi: [
-                    'G6173',
-                    'G6141'
-                ]
-            },
-            {
-                fromCode: 'LHA',
-                fromCiteText: '隆回',
-                code: 'IOQ',
-                toCiteText: '深圳北'
-            },
-            {
-                fromCode: 'SYQ',
-                fromCiteText: '邵阳',
-                code: 'IOQ',
-                toCiteText: '深圳北',
-                checi: [
-                    'G6173',
-                    'G6141'
-                ]
-            },
-        ]
-    }*/
-    /*queryOptions: {
-        queryDates: [
-            '2020-01-20'
-        ],
-        toCiteCodes: [
-            {
-                fromCode: 'BJP',
-                fromCiteText: '北京西',
-                code: 'CSQ',
-                toCiteText: '长沙南',
-                checi: [
-                    'G403',
-                    'G79'
-                ]
-            }
-        ]
-    },*/
     queryOptions: {
         intervalTime: 1000,
         queryListParams: [
