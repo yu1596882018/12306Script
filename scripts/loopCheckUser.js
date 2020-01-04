@@ -17,5 +17,5 @@ const start = async () => {
         });
     }
 }
-start();
+setTimeout(start, 3000);
 setTimeout(start, 10 * 60 * 1000);
