@@ -126,33 +126,36 @@ module.exports = {
                 userIndex: 0,
                 isEnd: false,
                 queryDates: [
-                    '2020-02-01'
+                    '2020-01-17',
+                    '2020-01-18',
+                    '2020-01-19',
+                    '2020-01-20',
                 ],
                 citeCodes: [
                     {
-                        fromCode: 'KAQ',
-                        fromCiteText: '怀化南',
-                        toCode: 'IOQ',
-                        toCiteText: '深圳北',
+                        fromCode: 'IOQ',
+                        fromCiteText: '深圳北',
+                        toCode: 'KAQ',
+                        toCiteText: '怀化南',
                         checi: [
-                            'G6173',
-                            'G6141'
+                            'G6174',
+                            'G6142'
                         ]
                     },
                     {
-                        fromCode: 'LHA',
-                        fromCiteText: '隆回',
-                        toCode: 'IOQ',
-                        toCiteText: '深圳北'
+                        fromCode: 'IOQ',
+                        fromCiteText: '深圳北',
+                        toCode: 'LHA',
+                        toCiteText: '隆回'
                     },
                     {
-                        fromCode: 'SYQ',
-                        fromCiteText: '邵阳',
-                        toCode: 'IOQ',
-                        toCiteText: '深圳北',
+                        fromCode: 'IOQ',
+                        fromCiteText: '深圳北',
+                        toCode: 'SYQ',
+                        toCiteText: '邵阳',
                         checi: [
-                            'G6173',
-                            'G6141'
+                            'G6174',
+                            'G6142'
                         ]
                     }
                 ]
