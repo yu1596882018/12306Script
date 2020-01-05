@@ -1,6 +1,7 @@
 const superagent = require('superagent');
 const setHeaders = require('./setHeaders');
 const utils = require('./utils');
+const localConfig = require('./localConfig');
 
 module.exports = async (answer) => {
     /*let captchaResult = await setHeaders(superagent.get('https://kyfw.12306.cn/passport/captcha/captcha-image64'))
@@ -32,8 +33,8 @@ module.exports = async (answer) => {
     let loginResult = await setHeaders(superagent.post('https://kyfw.12306.cn/passport/web/login'))
         .send({
             answer: answer,
-            username: 'yu1596882018',
-            password: 'xingyun2014',
+            username: localConfig.username,
+            password: localConfig.password,
             appid: 'otn',
             _json_att: '',
         });

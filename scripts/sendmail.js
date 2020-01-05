@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const localConfig = require('./localConfig');
 
 module.exports = (key, opt = {}) => {
 // async..await is not allowed in global scope, must use a wrapper
@@ -13,8 +14,8 @@ module.exports = (key, opt = {}) => {
             port: 465,
             secure: true, // true for 465, false for other ports
             auth: {
-                user: '1596882018@qq.com', // generated ethereal user
-                pass: 'frlogvlerobwfhfe' // generated ethereal password
+                user: localConfig.emailUser, // generated ethereal user
+                pass: localConfig.emailPass// generated ethereal password
             }
         });
 
@@ -23,8 +24,7 @@ module.exports = (key, opt = {}) => {
             from: '"烟竹" <1596882018@qq.com>', // sender address
             to: "1596882018@qq.com", // list of receivers
             subject: "校验验证码", // Subject line
-            // html: `<a href="http://localhost:8899/autoCode.html?key=${key}">${opt.flag ? opt.flag : '登录状态失效，'}前往验证</a>` // html body
-            html: `<a href="http://www.xinyu8.wang/autoCode.html?key=${key}">${opt.flag ? opt.flag : '登录状态失效，'}前往验证</a>` // html body
+            html: `<a href="${localConfig.host}/autoCode.html?key=${key}">${opt.flag ? opt.flag : '登录状态失效，'}前往验证</a>` // html body
         });
 
         console.log("Message sent: %s", info.messageId);

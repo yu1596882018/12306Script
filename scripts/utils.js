@@ -1,4 +1,5 @@
 const config = require('./config');
+const localConfig = require('./localConfig');
 const nodemailer = require("nodemailer");
 
 module.exports = {
@@ -28,8 +29,8 @@ module.exports = {
                 port: 465,
                 secure: true,
                 auth: {
-                    user: '1596882018@qq.com',
-                    pass: 'frlogvlerobwfhfe'
+                    user: localConfig.emailUser,
+                    pass: localConfig.emailPass
                 }
             });
 
