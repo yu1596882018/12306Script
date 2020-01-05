@@ -79,13 +79,13 @@ module.exports = {
                         fromCiteText: '深圳',
                         toCode: 'PXG',
                         toCiteText: '萍乡北'
-                    },
+                    }/*,
                     {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
                         toCode: 'CSQ',
                         toCiteText: '长沙'
-                    }
+                    }*/
                 ]
             },
             {

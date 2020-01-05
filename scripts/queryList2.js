@@ -63,6 +63,9 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
                         setTimeout(queryFunc, intervalTime || 5000);
                     }
                 }, err => {
+                    if (err.message !== '有') {
+                        setTimeout(queryFunc, 10 * 60 * 1000);
+                    }
                     throw err;
                 });
             }
