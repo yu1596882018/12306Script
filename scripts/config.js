@@ -130,14 +130,12 @@ module.exports = {
                         toCiteText: '隆回'
                     }
                 ]
-            }/*,
+            },
             {
                 userIndex: 0,
                 isEnd: false,
                 queryDates: [
-                    '2020-01-31',
                     '2020-02-01',
-                    '2020-02-02',
                 ],
                 citeCodes: [
                     {
@@ -147,9 +145,9 @@ module.exports = {
                         toCiteText: '深圳北',
                         checi: [
                             'G6173',
-                            'G6141'
+                            // 'G6141'
                         ]
-                    },
+                    }/*,
                     {
                         fromCode: 'LHA',
                         fromCiteText: '隆回',
@@ -171,9 +169,9 @@ module.exports = {
                         fromCiteText: '隆回',
                         toCode: 'IZQ',
                         toCiteText: '广州南'
-                    }
+                    }*/
                 ]
-            }*/
+            }
         ]
     }
 }
