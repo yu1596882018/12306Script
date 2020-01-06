@@ -4,12 +4,12 @@ const redisDb = redis.createClient(6379, 'localhost');
 let userCookie = 'JSESSIONID=9032181F66FBA8B98C78B038B2FFC61D; tk=bzUFTKw-tnQ12SxSSH7z4i6qdlecMqE9AA6tVxjekk0xhy1y0; _jc_save_wfdc_flag=dc; BIGipServerotn=535298314.50210.0000; RAIL_EXPIRATION=1578413544697; RAIL_DEVICEID=IpwYVKNMh6Tizi15NP58IE-ZKG7UzuFqxsvybQG0VQ5h3ni6cPbjVWjQk2o2wuTWDhgbPx0-DgveztEB7XX1X0NY6sYbUBNy9bSddRWJbBfYzRUAsVmdXyS-UGJcaFdmdCWHwieKKQqJ3VEiSMTPpj7hNXBM_CP3; BIGipServerpassport=921174282.50215.0000; route=c5c62a339e7744272a54643b3be5bf64; _jc_save_toDate=2020-01-04; _jc_save_fromStation=%u90B5%u9633%2CSYQ; _jc_save_toStation=%u6DF1%u5733%u5317%2CIOQ; _jc_save_fromDate=2020-01-04';
 
 redisDb.get('userCookie', function (err, v) {
-    v && (userCookie = v);
+    // v && (userCookie = v);
 });
 
 module.exports = {
     redisDb,
-    queryCookie: 'JSESSIONID=9A14BCDDEEBAA3F8C1523E93030752E6; route=6f50b51faa11b987e576cdb301e545c4; BIGipServerotn=3772186890.24610.0000; _jc_save_fromStation=%u5317%u4EAC%2CBJP; _jc_save_toStation=%u957F%u6C99%2CCSQ; _jc_save_fromDate=2020-01-02; _jc_save_toDate=2020-01-02; _jc_save_wfdc_flag=dc; RAIL_EXPIRATION=1578230858671; RAIL_DEVICEID=ofBYBSqCHFoBVY_ziHto3hT-TeGAyC1zz_Ltx9YSh_n70MEAipVDgiH5jetjjbBZiHqdrRNwfuTDqbXdE9c1fQMS4615qcWtyksnluou3wtHEr0_JaOPxUybxIBeUgjXEATxDU9HEAkom0R-SoTYnIRMIxlMuu5G',
+    queryCookie: 'JSESSIONID=182562E795A3B6445A940903A71CC6FA; route=c5c62a339e7744272a54643b3be5bf64; BIGipServerotn=2631336202.50210.0000; _jc_save_fromStation=%u6000%u5316%u5357%2CKAQ; _jc_save_toStation=%u6DF1%u5733%2CSZQ; _jc_save_fromDate=2020-01-06; _jc_save_toDate=2020-01-06; _jc_save_wfdc_flag=dc; RAIL_EXPIRATION=1578611211248; RAIL_DEVICEID=YT1Q0t3s5xVrw160ESqq_UAqg6riDz0jjWNcQPOrhWZZaOy2r4ye5UUlL0roLwkPXmuMoiOU3hx_m8ETJiLi-r5XTHuMCppU1R1MEfNrNun8kMKK2qouQW1BkxZLB06JI2FqpIei2VwldQV2R0rZrn4t06nTU4C2',
     set userCookie (value) {
         redisDb.set('userCookie', value);
         userCookie = value;
@@ -93,8 +93,7 @@ module.exports = {
                 isEnd: false,
                 queryDates: [
                     '2020-01-17',
-                    '2020-01-18',
-                    '2020-01-19',
+                    '2020-01-18'
                 ],
                 citeCodes: [
                     {
