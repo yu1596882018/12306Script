@@ -50,7 +50,7 @@ module.exports = {
         queryListParams: [
             {
                 userIndex: 5,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-20'
                 ],
@@ -69,7 +69,7 @@ module.exports = {
             },
             {
                 userIndex: 3,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-20'
                 ],
@@ -90,7 +90,7 @@ module.exports = {
             },
             {
                 userIndex: 0,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-17',
                     '2020-01-18'
@@ -169,6 +169,34 @@ module.exports = {
                         toCode: 'IZQ',
                         toCiteText: '广州南'
                     }*/
+                ]
+            },
+            {
+                userIndex: 0,
+                isEnd: false,
+                queryDates: [
+                    '2020-01-17',
+                    '2020-01-18',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'SYQ',
+                        toCiteText: '邵阳'
+                    },
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'SYQ',
+                        toCiteText: '邵阳'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'KAQ',
+                        toCiteText: '怀化南'
+                    },
                 ]
             }
         ]
