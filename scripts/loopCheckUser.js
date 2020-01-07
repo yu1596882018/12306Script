@@ -28,7 +28,7 @@ const start = async () => {
     // let checkUserData = JSON.parse(checkUserResult.text);
     let checkUserData = chechFaceResult.body;
     console.log(chechFaceResult.body)
-    if (!checkUserData.data.login_flag) {
+    if (checkUserData.status && !checkUserData.data.login_flag) {
         console.log('cookie失效');
         getCodeImage({
             sendmail: true
