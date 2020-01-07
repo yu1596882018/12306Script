@@ -1,10 +1,10 @@
 const redis = require('redis');
-const redisDb = redis.createClient(6379, 'localhost');
-// const redisDb = redis.createClient(6379, '39.108.161.237');
+const localConfig = require('./localConfig');
+const redisDb = redis.createClient(6379, localConfig.redisHost);
 let userCookie = 'JSESSIONID=9032181F66FBA8B98C78B038B2FFC61D; tk=bzUFTKw-tnQ12SxSSH7z4i6qdlecMqE9AA6tVxjekk0xhy1y0; _jc_save_wfdc_flag=dc; BIGipServerotn=535298314.50210.0000; RAIL_EXPIRATION=1578413544697; RAIL_DEVICEID=IpwYVKNMh6Tizi15NP58IE-ZKG7UzuFqxsvybQG0VQ5h3ni6cPbjVWjQk2o2wuTWDhgbPx0-DgveztEB7XX1X0NY6sYbUBNy9bSddRWJbBfYzRUAsVmdXyS-UGJcaFdmdCWHwieKKQqJ3VEiSMTPpj7hNXBM_CP3; BIGipServerpassport=921174282.50215.0000; route=c5c62a339e7744272a54643b3be5bf64; _jc_save_toDate=2020-01-04; _jc_save_fromStation=%u90B5%u9633%2CSYQ; _jc_save_toStation=%u6DF1%u5733%u5317%2CIOQ; _jc_save_fromDate=2020-01-04';
 
 redisDb.get('userCookie', function (err, v) {
-    // v && (userCookie = v);
+    v && (userCookie = v);
 });
 
 module.exports = {
