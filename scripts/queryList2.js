@@ -11,6 +11,9 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
             queryFunc();
 
             function queryFunc () {
+                if (new Date().getHours() < 6 || new Date().getHours() >= 23) {
+                    return setTimeout(queryFunc, 60 * 60 * 1000);
+                }
                 let pros = [];
                 let flog = false;
 
