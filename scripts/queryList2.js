@@ -81,11 +81,36 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
 
 // 筛选最优车次
 function filterItem (data, queryOpt = {}) {
-    let items = data.filter(item => {
+    let items = data
+    if (queryOpt.scheduleTime) {
+        items = items.filter(item => {
+            let arr = item.split('|')
+            let currentTime = +arr[8].replace(':', '')
+            if (queryOpt.scheduleTime.startTime) {
+                if (currentTime < +queryOpt.scheduleTime.startTime.replace(':', '')) {
+                    return false
+                }
+            }
+
+            if (queryOpt.scheduleTime.endTime) {
+                if (currentTime > +queryOpt.scheduleTime.endTime.replace(':', '')) {
+                    return false
+                }
+            }
+
+            if (queryOpt.scheduleToSiteCode && arr[7] !== queryOpt.scheduleToSiteCode) {
+                return false
+            }
+
+            return true
+        })
+    }
+
+    items = items.filter(item => {
         let arr = item.split('|');
-        return (queryOpt.checi ? queryOpt.checi.includes(arr[3]) : true) && arr[11] === 'Y' && ((arr[30] && arr[30] !== '无') || (arr[31] && arr[31] !== '无'));
+        return (queryOpt.checi ? queryOpt.checi.includes(arr[3]) : true) && arr[11] === 'Y' && ((arr[30] && arr[30] !== '无') || (arr[31] && arr[31] !== '无'))
     }).map(item => {
-        let arr = item.split('|');
+        let arr = item.split('|')
         let O, M;
         if (!arr[30] || arr[30] === '无') {
             O = 0;

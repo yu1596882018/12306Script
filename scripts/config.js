@@ -4,7 +4,7 @@ const redisDb = redis.createClient(6379, localConfig.redisHost);
 let userCookie = 'JSESSIONID=AD5184D2F29D6BCBCFFF0A035781896A; tk=_lj5do72NWBm_SOMrC0osUEC3mO2UBwESwQwxJj3li4huy1y0; route=9036359bb8a8a461c164a04f8f50b252; BIGipServerotn=3772186890.50210.0000; BIGipServerpassport=786956554.50215.0000; RAIL_EXPIRATION=1578727816348; RAIL_DEVICEID=b7hgaLAVEOihybGvWrP_sdcretK_BPlLg3jZFMXmXwfSFWl8moJHHUiQ98tuSUuoT7wnEKOU-JU-g8DGAEhd_UL6UF8hTlhsiBHh77k-lnYyRmnrI5HeNsmpOAKuBcISSKd8ZuUUe3ZEuO34BcwKXnReGcAYSi4G; _jc_save_fromDate=2020-01-18; _jc_save_toDate=2020-01-08; _jc_save_wfdc_flag=dc; _jc_save_toStation=%u9686%u56DE%2CLHA; _jc_save_fromStation=%u6DF1%u5733%2CSZQ';
 
 redisDb.get('userCookie', function (err, v) {
-    // v && (userCookie = v);
+    v && (userCookie = v);
 });
 
 module.exports = {
@@ -48,6 +48,44 @@ module.exports = {
     queryOptions: {
         intervalTime: 1000,
         queryListParams: [
+            {
+                userIndex: 0,
+                isEnd: false,
+                queryDates: [
+                    '2020-01-17',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'GZQ',
+                        toCiteText: '广州',
+                        scheduleToSiteCode: 'IZQ',
+                        scheduleTime: {
+                            startTime: '18:00',
+                            endTime: ''
+                        }
+                    }
+                ]
+            },
+            {
+                userIndex: 0,
+                isEnd: false,
+                queryDates: [
+                    '2020-02-01',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'KAQ',
+                        fromCiteText: '怀化南',
+                        toCode: 'IOQ',
+                        toCiteText: '深圳北',
+                        checi: [
+                            'G6173'
+                        ]
+                    }
+                ]
+            },
             {
                 userIndex: 5,
                 isEnd: true,
@@ -132,25 +170,7 @@ module.exports = {
             },
             {
                 userIndex: 0,
-                isEnd: false,
-                queryDates: [
-                    '2020-02-01',
-                ],
-                citeCodes: [
-                    {
-                        fromCode: 'KAQ',
-                        fromCiteText: '怀化南',
-                        toCode: 'IOQ',
-                        toCiteText: '深圳北',
-                        checi: [
-                            'G6173'
-                        ]
-                    }
-                ]
-            },
-            {
-                userIndex: 0,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-17',
                     '2020-01-18',
