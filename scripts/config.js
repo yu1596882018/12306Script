@@ -1,7 +1,7 @@
 const redis = require('redis');
 const localConfig = require('./localConfig');
 const redisDb = redis.createClient(6379, localConfig.redisHost);
-let userCookie = 'JSESSIONID=2AB56798FA73819C2F7F2FF3F06794E9; tk=o51x9gl4iu6n-PWv-w72p4iAfn6UVn0HZuaocHlg3OAwey1y0; _jc_save_wfdc_flag=dc; RAIL_EXPIRATION=1578611211248; RAIL_DEVICEID=YT1Q0t3s5xVrw160ESqq_UAqg6riDz0jjWNcQPOrhWZZaOy2r4ye5UUlL0roLwkPXmuMoiOU3hx_m8ETJiLi-r5XTHuMCppU1R1MEfNrNun8kMKK2qouQW1BkxZLB06JI2FqpIei2VwldQV2R0rZrn4t06nTU4C2; BIGipServerpassport=887619850.50215.0000; route=c5c62a339e7744272a54643b3be5bf64; BIGipServerotn=451412234.64545.0000; _jc_save_fromStation=%u90B5%u9633%2CSYQ; _jc_save_toStation=%u5E7F%u5DDE%2CGZQ; _jc_save_fromDate=2020-01-08; _jc_save_toDate=2020-01-08';
+let userCookie = 'JSESSIONID=AD5184D2F29D6BCBCFFF0A035781896A; tk=_lj5do72NWBm_SOMrC0osUEC3mO2UBwESwQwxJj3li4huy1y0; route=9036359bb8a8a461c164a04f8f50b252; BIGipServerotn=3772186890.50210.0000; BIGipServerpassport=786956554.50215.0000; RAIL_EXPIRATION=1578727816348; RAIL_DEVICEID=b7hgaLAVEOihybGvWrP_sdcretK_BPlLg3jZFMXmXwfSFWl8moJHHUiQ98tuSUuoT7wnEKOU-JU-g8DGAEhd_UL6UF8hTlhsiBHh77k-lnYyRmnrI5HeNsmpOAKuBcISSKd8ZuUUe3ZEuO34BcwKXnReGcAYSi4G; _jc_save_fromDate=2020-01-18; _jc_save_toDate=2020-01-08; _jc_save_wfdc_flag=dc; _jc_save_toStation=%u9686%u56DE%2CLHA; _jc_save_fromStation=%u6DF1%u5733%2CSZQ';
 
 redisDb.get('userCookie', function (err, v) {
     // v && (userCookie = v);
