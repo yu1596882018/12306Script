@@ -143,32 +143,9 @@ module.exports = {
                         toCode: 'IOQ',
                         toCiteText: '深圳北',
                         checi: [
-                            'G6173',
-                            // 'G6141'
+                            'G6173'
                         ]
-                    }/*,
-                    {
-                        fromCode: 'LHA',
-                        fromCiteText: '隆回',
-                        toCode: 'IOQ',
-                        toCiteText: '深圳北'
-                    },
-                    {
-                        fromCode: 'SYQ',
-                        fromCiteText: '邵阳',
-                        toCode: 'IOQ',
-                        toCiteText: '深圳北',
-                        checi: [
-                            'G6173',
-                            'G6141'
-                        ]
-                    },
-                    {
-                        fromCode: 'LHA',
-                        fromCiteText: '隆回',
-                        toCode: 'IZQ',
-                        toCiteText: '广州南'
-                    }*/
+                    }
                 ]
             },
             {
@@ -195,7 +172,20 @@ module.exports = {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
                         toCode: 'KAQ',
-                        toCiteText: '怀化南'
+                        toCiteText: '怀化南',
+                        checi: [
+                            'G6174',
+                            'G6142',
+                        ]
+                    },
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'KAQ',
+                        toCiteText: '怀化南',
+                        checi: [
+                            "G9630", "G6170", "G6142", "G6174", "G6172", "G9624", "G2956", "G9632", "G6152", "G9622"
+                        ]
                     },
                 ]
             }
