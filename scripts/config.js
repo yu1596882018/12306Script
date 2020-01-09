@@ -87,7 +87,8 @@ module.exports = {
                 userIndex: 3,
                 isEnd: false,
                 queryDates: [
-                    '2020-01-20'
+                    '2020-01-20',
+                    '2020-01-21'
                 ],
                 citeCodes: [
                     {
@@ -100,7 +101,11 @@ module.exports = {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
                         toCode: 'CSQ',
-                        toCiteText: '长沙'
+                        toCiteText: '长沙',
+                        scheduleTime: {
+                            startTime: '07:30',
+                            endTime: '21:00'
+                        }
                     }
                 ]
             },
