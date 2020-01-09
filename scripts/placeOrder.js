@@ -13,7 +13,7 @@ module.exports = async (options, configItem) => {
         toCiteCode: options.toCiteCode,
         fromCiteText: options.fromCiteText,
         toCiteText: options.toCiteText,
-        seatType: '', // M一等座 O二等座
+        seatType: '', // M一等座 O二等座 4软卧(index-23) 3硬卧(index-26) 1硬座（index-28）
     };
 
     // 校验登录

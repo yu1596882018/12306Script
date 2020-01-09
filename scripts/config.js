@@ -107,7 +107,7 @@ module.exports = {
             },
             {
                 userIndex: 3,
-                isEnd: true,
+                isEnd: false,
                 queryDates: [
                     '2020-01-20'
                 ],
@@ -117,13 +117,13 @@ module.exports = {
                         fromCiteText: '深圳',
                         toCode: 'PXG',
                         toCiteText: '萍乡北'
-                    }/*,
+                    },
                     {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
                         toCode: 'CSQ',
                         toCiteText: '长沙'
-                    }*/
+                    }
                 ]
             },
             {
