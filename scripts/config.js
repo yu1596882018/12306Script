@@ -46,7 +46,7 @@ module.exports = {
     ],
     codeImages: {},
     queryOptions: {
-        intervalTime: 1000,
+        intervalTime: 500,
         queryListParams: [
             {
                 userIndex: 0,
@@ -69,6 +69,23 @@ module.exports = {
                 ]
             },
             {
+                userIndex: 4,
+                isEnd: false,
+                queryDates: [
+                    '2020-02-02',
+                    '2020-02-03',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'KMM',
+                        fromCiteText: '昆明',
+                        toCode: 'SZQ',
+                        toCiteText: '深圳',
+                        seatType: ['O']
+                    }
+                ]
+            },
+            {
                 userIndex: 0,
                 isEnd: false,
                 queryDates: [
@@ -82,25 +99,6 @@ module.exports = {
                         toCiteText: '深圳北',
                         checi: [
                             'G6173'
-                        ]
-                    }
-                ]
-            },
-            {
-                userIndex: 5,
-                isEnd: true,
-                queryDates: [
-                    '2020-01-20'
-                ],
-                citeCodes: [
-                    {
-                        fromCode: 'BJP',
-                        fromCiteText: '北京西',
-                        toCode: 'CSQ',
-                        toCiteText: '长沙南',
-                        checi: [
-                            'G403',
-                            'G79'
                         ]
                     }
                 ]
@@ -123,6 +121,25 @@ module.exports = {
                         fromCiteText: '深圳',
                         toCode: 'CSQ',
                         toCiteText: '长沙'
+                    }
+                ]
+            },
+            {
+                userIndex: 5,
+                isEnd: true,
+                queryDates: [
+                    '2020-01-20'
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'BJP',
+                        fromCiteText: '北京西',
+                        toCode: 'CSQ',
+                        toCiteText: '长沙南',
+                        checi: [
+                            'G403',
+                            'G79'
+                        ]
                     }
                 ]
             },
