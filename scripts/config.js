@@ -49,26 +49,6 @@ module.exports = {
         intervalTime: 500,
         queryListParams: [
             {
-                userIndex: 0,
-                isEnd: false,
-                queryDates: [
-                    '2020-01-17',
-                ],
-                citeCodes: [
-                    {
-                        fromCode: 'SZQ',
-                        fromCiteText: '深圳',
-                        toCode: 'GZQ',
-                        toCiteText: '广州',
-                        scheduleToSiteCode: 'IZQ',
-                        scheduleTime: {
-                            startTime: '18:00',
-                            endTime: ''
-                        }
-                    }
-                ]
-            },
-            {
                 userIndex: 4,
                 isEnd: false,
                 queryDates: [
@@ -140,6 +120,26 @@ module.exports = {
                             'G403',
                             'G79'
                         ]
+                    }
+                ]
+            },
+            {
+                userIndex: 0,
+                isEnd: true,
+                queryDates: [
+                    '2020-01-17',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'GZQ',
+                        toCiteText: '广州',
+                        scheduleToSiteCode: 'IZQ',
+                        scheduleTime: {
+                            startTime: '18:00',
+                            endTime: ''
+                        }
                     }
                 ]
             },
