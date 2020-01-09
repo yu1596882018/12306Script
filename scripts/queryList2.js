@@ -111,6 +111,10 @@ function filterItem (data, queryOpt = {}) {
 
     items = items.filter(item => {
         let arr = item.split('|');
+        if (queryOpt.refuseCheci && queryOpt.refuseCheci.includes(arr[3])) {
+            return false
+        }
+
         return (queryOpt.checi ? queryOpt.checi.includes(arr[3]) : true) && arr[11] === 'Y' && ((arr[30] && arr[30] !== '无') || (arr[31] && arr[31] !== '无'))
     }).map(item => {
         let arr = item.split('|')

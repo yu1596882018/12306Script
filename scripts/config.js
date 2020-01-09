@@ -102,6 +102,7 @@ module.exports = {
                         fromCiteText: '深圳',
                         toCode: 'CSQ',
                         toCiteText: '长沙',
+                        refuseCheci: ['G6024'],
                         scheduleTime: {
                             startTime: '07:30',
                             endTime: '21:00'
