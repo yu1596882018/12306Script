@@ -37,4 +37,4 @@ const start = async () => {
 }
 
 setTimeout(start, 3000);
-setInterval(start, 10 * 60 * 1000);
+setInterval(start, 30 * 60 * 1000);
