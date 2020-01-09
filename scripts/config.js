@@ -126,7 +126,7 @@ module.exports = {
             },
             {
                 userIndex: 5,
-                isEnd: true,
+                isEnd: false,
                 queryDates: [
                     '2020-01-20'
                 ],

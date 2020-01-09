@@ -147,7 +147,7 @@ function filterItem (data, queryOpt = {}) {
         return item.O;
     });
 
-    if (!item && queryOpt.seatType.includes('M')) {
+    if (!item && (queryOpt.seatType ? queryOpt.seatType.includes('M') : true)) {
         item = items.find(item => {
             return item.M;
         });
