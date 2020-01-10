@@ -1,5 +1,5 @@
 var redis = require("redis");
-var sub = redis.createClient(6379, '39.108.161.237'), pub = redis.createClient(6379, '39.108.161.237');
+var client = redis.createClient(6379, '39.108.161.237');/*, pub = redis.createClient(6379, '39.108.161.237');
 var msg_count = 0;
 
 sub.on("subscribe", function (channel, count) {
@@ -19,3 +19,20 @@ sub.on("message", function (channel, message) {
 });
 
 sub.subscribe("a nice channel");
+*/
+
+client.hset('codeImages', '62cd0e10-3374-11ea-a8ac-634c71af5e44', 'value', redis.print);
+
+
+(async () => {
+    let result = await new Promise((resolve, reject) => {
+        client.hget('codeImages', '62cd0e10-3374-11ea-a8ac-634c71af5e44', (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(res)
+            }
+        })
+    })
+    console.log(result)
+})()
