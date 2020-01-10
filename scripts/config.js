@@ -150,8 +150,8 @@ module.exports = {
                 ]
             },
             {
-                userIndex: 0,
-                isEnd: true,
+                userIndex: 4,
+                isEnd: false,
                 queryDates: [
                     '2020-01-17',
                     '2020-01-18'
@@ -166,7 +166,7 @@ module.exports = {
                             'G6174',
                             'G6142'
                         ]
-                    },
+                    }/*,
                     {
                         fromCode: 'IOQ',
                         fromCiteText: '深圳北',
@@ -188,7 +188,7 @@ module.exports = {
                         fromCiteText: '广州南',
                         toCode: 'LHA',
                         toCiteText: '隆回'
-                    }
+                    }*/
                 ]
             },
             {
