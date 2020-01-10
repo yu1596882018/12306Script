@@ -19,7 +19,7 @@ module.exports = async (opt) => {
     }
     let key = uuidv1();
     // config.codeImages[key] = captchaResult.body.image;
-    config.redisDb.hset('codeImages', key, captchaResult.body.image, redis);
+    config.redisDb.hset('codeImages', key, captchaResult.body.image, redis.print);
     if (opt && opt.sendmail) {
         sendmail(key, opt);
     }
