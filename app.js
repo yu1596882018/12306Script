@@ -46,7 +46,7 @@ redisDb.subscribe('app');
 router.get('/getCode', async (ctx) => {
     // let image = config.codeImages[ctx.query.key];
     let image = await new Promise((resolve, reject) => {
-        client.hget('codeImages', ctx.query.key, (err, res) => {
+        redisDb.hget('codeImages', ctx.query.key, (err, res) => {
             if (err) {
                 reject(err);
             } else {
