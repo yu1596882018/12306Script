@@ -5,6 +5,7 @@
   "main": "temp/common.js",
   "scripts": {
     "start": "node ./app.js",
+    "loopCheckUser": "node ./scripts/loopCheckUser.js",
     "pm2": "pm2 start ./app.js -i 4"
   },
   "author": "",

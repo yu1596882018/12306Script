@@ -5,9 +5,10 @@ const logger = require('koa-logger');
 const Router = require('koa-router');
 const getCodeImage = require('./scripts/getCodeImage');
 const config = require('./scripts/config');
+const {redisDb} = config;
 const authCookie = require('./scripts/authCookie');
 const queryList = require('./scripts/queryList2');
-require('./scripts/loopCheckUser');
+// require('./scripts/loopCheckUser');
 let querySample = queryList(config.queryOptions);
 
 const App = new Koa();
@@ -21,6 +22,26 @@ App.use(logger())
 // 路由注册
 const router = new Router();
 
+
+redisDb.on("subscribe", function (channel, count) {
+    console.log(`${channel}订阅成功`);
+});
+
+redisDb.on("message", function (channel, message) {
+    if (channel == 'app') {
+        if (message == 'updateCookie') {
+            redisDb.get('userCookie', function (err, v) {
+                v && (config.userCookie = v);
+                querySample.stop();
+                querySample = queryList(config.queryOptions);
+            });
+        }
+    }
+});
+
+redisDb.subscribe('app');
+
+
 // 获取验证码
 router.get('/getCode', async (ctx) => {
     let image = config.codeImages[ctx.query.key];
@@ -31,8 +52,7 @@ router.get('/getCode', async (ctx) => {
 router.get('/submitCode', async (ctx) => {
     ctx.body = await authCookie(ctx.query.answer);
     if (ctx.body.result_code === 0) {
-        querySample.stop();
-        querySample = queryList(config.queryOptions);
+        redisDb.publish('app', 'updateCookie');
     }
 });
 
