@@ -45,7 +45,15 @@ redisDb.subscribe('app');
 // 获取验证码
 router.get('/getCode', async (ctx) => {
     // let image = config.codeImages[ctx.query.key];
-    let image = redisDb.hget("codeImages", ctx.query.key);
+    let image = await new Promise((resolve, reject) => {
+        client.hget('codeImages', ctx.query.key, (err, res) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(res);
+            }
+        });
+    });
     ctx.body = image;
 });
 
