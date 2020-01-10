@@ -1,37 +1,22 @@
-const Koa2 = require('koa2');
-const logger = require('koa-logger');
-const k2c = require('koa2-connect');
-var httpProxy = require('http-proxy-middleware');
+var http = require('http'),
+    httpProxy = require('http-proxy');
 
-const app = new Koa2();
+//
+// Create a proxy server with custom application logic
+//
+var proxy = httpProxy.createProxyServer({});
 
-app.use(logger())
-
-app.use(async (ctx, next) => {
-    ctx.respond = false;
-    await k2c(httpProxy({
-            target: 'http://192.168.56.1:9999',
-            // target: 'https://kyfw.12306.cn/otn/leftTicket/queryZ',
-            changeOrigin: true,
-            secure: false
-        }
-    ))(ctx, next);
-    await next()
-})
-
-app.listen(8888, () => {
-    console.log('启动成功', 'http://' + getIPAdress() + ':8888');
+//
+// Create your custom server and just call `proxy.web()` to proxy
+// a web request to the target passed in the options
+// also you can use `proxy.ws()` to proxy a websockets request
+//
+var server = http.createServer(function (req, res) {
+    // You can define here your custom logic to handle the request
+    // and then proxy the request.
+    proxy.web(req, res, {target: 'https://kyfw.12306.cn'});
+    // proxy.web(req, res, {target: 'http://127.0.0.1:5151'});
 });
 
-function getIPAdress () { // 获取本机主机名和ip
-    var interfaces = require('os').networkInterfaces();
-    for (var devName in interfaces) {
-        var iface = interfaces[devName];
-        for (var i = 0; i < iface.length; i++) {
-            var alias = iface[i];
-            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
-                return alias.address;
-            }
-        }
-    }
-}
+console.log("listening on port 5050")
+server.listen(5050);
