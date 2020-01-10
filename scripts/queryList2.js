@@ -1,8 +1,10 @@
 // 查询有票车次
 const superagent = require('superagent');
+require('superagent-proxy')(superagent);
 const setHeaders = require('./setHeaders');
 const placeOrder = require('./placeOrder');
 const {queryCookie} = require('./config');
+const {openProxy, proxyUrl} = require('./localConfig');
 
 module.exports = function ({queryListParams: QLP, intervalTime}) {
     let isStopFlog = false;
@@ -22,7 +24,9 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
                         pros.push(new Promise(async (resolve, reject) => {
                             try {
                                 // 查询
-                                let queryZResult = await setHeaders(superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ'), queryCookie)
+                                let queryZResult = await setHeaders((openProxy ?
+                                    superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ').proxy(proxyUrl) :
+                                    superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ')), queryCookie)
                                     .query({
                                         'leftTicketDTO.train_date': queryDate,
                                         'leftTicketDTO.from_station': queryOpt.fromCode,
