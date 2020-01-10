@@ -44,7 +44,8 @@ redisDb.subscribe('app');
 
 // 获取验证码
 router.get('/getCode', async (ctx) => {
-    let image = config.codeImages[ctx.query.key];
+    // let image = config.codeImages[ctx.query.key];
+    let image = redisDb.hget("codeImages", ctx.query.key);
     ctx.body = image;
 });
 

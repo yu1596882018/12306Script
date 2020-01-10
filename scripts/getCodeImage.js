@@ -4,6 +4,7 @@ const superagent = require('superagent');
 const setHeaders = require('./setHeaders');
 const utils = require('./utils');
 const sendmail = require('./sendmail');
+const redis = require('redis');
 module.exports = async (opt) => {
     let captchaResult = await setHeaders(superagent.get('https://kyfw.12306.cn/passport/captcha/captcha-image64'))
         .query({
@@ -17,7 +18,8 @@ module.exports = async (opt) => {
         return console.log(captchaResult.body.result_message);
     }
     let key = uuidv1();
-    config.codeImages[key] = captchaResult.body.image;
+    // config.codeImages[key] = captchaResult.body.image;
+    config.redisDb.hset('codeImages', key, captchaResult.body.image, redis);
     if (opt && opt.sendmail) {
         sendmail(key, opt);
     }
