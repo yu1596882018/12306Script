@@ -6,7 +6,7 @@ const redisSub = redis.createClient(6379, localConfig.redisHost);
 let userCookie = 'JSESSIONID=68DE645B3FC048D4E9346D8EB10546D7; tk=rkXOL2t0qTOB8b_S5_N21f95MlvNwh6TFT9U30FJJssnxy1y0; _jc_save_wfdc_flag=dc; _jc_save_fromStation=%u6DF1%u5733%u5317%2CIOQ; _jc_save_toStation=%u9686%u56DE%2CLHA; BIGipServerotn=1978138890.50210.0000; BIGipServerpassport=837288202.50215.0000; RAIL_EXPIRATION=1579043915275; RAIL_DEVICEID=GSTWBXJRfxXI-pQb4HBLATGmYDPxbQ5lWEOO3WAle9DuKOJlMw06KPwfZxJWebSmfa5U8i-gk-TQ_yOw6_Zop_KRY7JcOWEn2EUaew0mn22F6JKiTizDyjkEneF3EBOn9YsvXtzvNInXy-kSjLFU7CyDL0rFMNqI; route=9036359bb8a8a461c164a04f8f50b252; _jc_save_toDate=2020-01-11; _jc_save_fromDate=2020-02-03';
 
 redisDb.get('userCookie', function (err, v) {
-    // v && (userCookie = v);
+    v && (userCookie = v);
 });
 
 module.exports = {

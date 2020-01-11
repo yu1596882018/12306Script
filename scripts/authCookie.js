@@ -4,6 +4,17 @@ const utils = require('./utils');
 const localConfig = require('./localConfig');
 
 module.exports = async (answer) => {
+    await new Promise((resolve, reject) => {
+        redisDb.get('userCookie', function (err, v) {
+            if (err) {
+                reject(err);
+            } else {
+                v && (userCookie = v);
+                resolve(v);
+            }
+        });
+    });
+
     /*let captchaResult = await setHeaders(superagent.get('https://kyfw.12306.cn/passport/captcha/captcha-image64'))
         .query({
             login_site: 'E',
