@@ -2,6 +2,7 @@ const superagent = require('superagent');
 const setHeaders = require('./setHeaders');
 const utils = require('./utils');
 const localConfig = require('./localConfig');
+const {redisDb} = require('./config');
 
 module.exports = async (answer) => {
     await new Promise((resolve, reject) => {
