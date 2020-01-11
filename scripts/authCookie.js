@@ -2,15 +2,15 @@ const superagent = require('superagent');
 const setHeaders = require('./setHeaders');
 const utils = require('./utils');
 const localConfig = require('./localConfig');
-const {redisDb} = require('./config');
+const config = require('./config');
 
 module.exports = async (answer) => {
     await new Promise((resolve, reject) => {
-        redisDb.get('userCookie', function (err, v) {
+        config.redisDb.get('userCookie', function (err, v) {
             if (err) {
                 reject(err);
             } else {
-                v && (userCookie = v);
+                v && (config.userCookie = v);
                 resolve(v);
             }
         });
