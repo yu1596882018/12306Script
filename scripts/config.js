@@ -119,6 +119,7 @@ module.exports = {
                 isEnd: false,
                 queryDates: [
                     '2020-02-01',
+                    '2020-02-02',
                 ],
                 citeCodes: [
                     {
