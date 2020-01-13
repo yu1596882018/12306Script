@@ -117,6 +117,7 @@ const start = async () => {
                 undefined: ''
             });
         console.log('submitOrderRequestResult', submitOrderRequestResult.text);
+        let checkUserrData = JSON.parse(submitOrderRequestResult.text);
     } catch (e) {
         console.log('异常', e);
         getCodeImage({
