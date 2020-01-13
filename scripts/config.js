@@ -54,7 +54,7 @@ module.exports = {
         queryListParams: [
             {
                 userIndex: 4,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-02-02',
                     '2020-02-03',
