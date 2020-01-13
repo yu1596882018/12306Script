@@ -115,6 +115,27 @@ module.exports = {
                 ]
             },
             {
+                userIndex: 3,
+                isEnd: false,
+                queryDates: [
+                    '2020-02-01',
+                ],
+                citeCodes: [
+                    {
+                        toCode: 'SZQ',
+                        toCiteText: '深圳',
+                        fromCode: 'PXG',
+                        fromCiteText: '萍乡北'
+                    },
+                    {
+                        toCode: 'SZQ',
+                        toCiteText: '深圳',
+                        fromCode: 'CSQ',
+                        fromCiteText: '长沙'
+                    }
+                ]
+            },
+            {
                 userIndex: 5,
                 isEnd: false,
                 queryDates: [
