@@ -118,7 +118,8 @@ module.exports = {
                 userIndex: 5,
                 isEnd: false,
                 queryDates: [
-                    '2020-01-20'
+                    '2020-01-20',
+                    '2020-01-21',
                 ],
                 citeCodes: [
                     {
@@ -126,10 +127,10 @@ module.exports = {
                         fromCiteText: '北京西',
                         toCode: 'CSQ',
                         toCiteText: '长沙南',
-                        checi: [
+                        /*checi: [
                             'G403',
                             'G79'
-                        ]
+                        ]*/
                     }
                 ]
             },
