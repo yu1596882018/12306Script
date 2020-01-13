@@ -46,6 +46,10 @@ module.exports = {
         {
             passengerTicketStr: ',0,1,李俊,1,4310***********415,,N,ded9fe206d7fce7a8fdb4a4a1410c524f237ed8bd15f2d8708e8fecc11e6c297',
             oldPassengerStr: '李俊,1,4310***********415,1_'
+        },
+        {
+            passengerTicketStr: ',0,1,何桂平,1,4311***********118,,N,a46903a2d3130dcc219d3390d6c0b3d792819454319703823ae8add0e76cc767',
+            oldPassengerStr: '何桂平,1,4311***********118,1_'
         }
     ],
     codeImages: {},
@@ -66,6 +70,21 @@ module.exports = {
                         toCode: 'SZQ',
                         toCiteText: '深圳',
                         seatType: ['O']
+                    }
+                ]
+            },
+            {
+                userIndex: 6,
+                isEnd: false,
+                queryDates: [
+                    '2020-02-01',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'ICQ',
+                        fromCiteText: '郴州西',
+                        toCode: 'SZQ',
+                        toCiteText: '深圳'
                     }
                 ]
             },
