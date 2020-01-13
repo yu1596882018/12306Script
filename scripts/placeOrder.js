@@ -195,12 +195,12 @@ module.exports = async (options, configItem) => {
         });
     console.log('resultOrderForDcQueueResult', resultOrderForDcQueueResult.text);
     let resultOrderForDcQueueData = JSON.parse(resultOrderForDcQueueResult.text);
-    if (resultOrderForDcQueueData.data.submitStatus) {
+    // if (resultOrderForDcQueueData.data.submitStatus) {
         console.log(`${options.queryDate}-${options.fromCiteText}-${options.toCiteText}，抢票成功`);
         configItem.isEnd = true;
         // 抢票成功邮件通知
         utils.sendMail({
             subject: `${options.queryDate}-${options.fromCiteText}-${options.toCiteText}，抢票成功`
         });
-    }
+    // }
 }
