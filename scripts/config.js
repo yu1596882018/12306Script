@@ -85,6 +85,16 @@ module.exports = {
                         fromCiteText: '郴州西',
                         toCode: 'SZQ',
                         toCiteText: '深圳'
+                    },
+                    {
+                        fromCode: 'ICQ',
+                        fromCiteText: '郴州西',
+                        toCode: 'GZQ',
+                        toCiteText: '广州',
+                        scheduleTime: {
+                            startTime: '09:00',
+                            endTime: '20:00'
+                        }
                     }
                 ]
             },
