@@ -126,16 +126,16 @@ module.exports = {
                         toCode: 'CSQ',
                         toCiteText: '长沙',
                         // refuseCheci: ['G6024'],
-                        scheduleTime: {
+                        /*scheduleTime: {
                             startTime: '07:30',
                             endTime: '21:00'
-                        }
+                        }*/
                     }
                 ]
             },
             {
                 userIndex: 3,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-02-01',
                     '2020-02-02',
