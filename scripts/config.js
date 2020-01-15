@@ -125,6 +125,12 @@ module.exports = {
                 ],
                 citeCodes: [
                     {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'PXG',
+                        toCiteText: '萍乡北'
+                    },
+                    {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
                         toCode: 'PXG',
