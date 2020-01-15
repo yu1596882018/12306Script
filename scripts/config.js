@@ -13,7 +13,7 @@ module.exports = {
     redisPub,
     redisSub,
     redisDb,
-    queryCookie: 'JSESSIONID=553F0776B0BF844198CE61C7AA7C53B8; BIGipServerpassport=837288202.50215.0000; BIGipServerotn=4074176778.24610.0000; RAIL_EXPIRATION=1579177283490; RAIL_DEVICEID=K0WBD1Ahww1yJe394XZr9L4AMiUev5hYfJdj5zVA3l5LFK5YAgi3mcsmSgFI-TY3jM9f6PNScxVVjGBzM6fsyqF9qgw4cQaTgxoII4xv-iRNekWz_zeZoqcVL0SQSgVwoIQJZzH4CcoFN8d67L_oNBPqYFHloNFI; route=c5c62a339e7744272a54643b3be5bf64; _jc_save_fromStation=%u6DF1%u5733%2CSZQ; _jc_save_toStation=%u957F%u6C99%2CCSQ; _jc_save_fromDate=2020-01-20; _jc_save_toDate=2020-01-13; _jc_save_wfdc_flag=dc',
+    queryCookie: 'JSESSIONID=3F4ADCF748DDE895819056455FCCEC7E; route=9036359bb8a8a461c164a04f8f50b252; BIGipServerotn=1574502666.50210.0000; RAIL_EXPIRATION=1579369681335; RAIL_DEVICEID=h0m8HyramPUE29Agj6k9u16GSMtBJYkdoMJ0V4ZrJbHoZbp5eb1yuGftXe20XNJpp8VywDuvbzh8KAqcOiQ8NGxuGlUeQHGEhKdpHys6q-MaEjB6_qzF4gHumooYlmzx-PE2prEOP3UV6GWItz2yLboBVkI3_g5I; _jc_save_toDate=2020-01-15; _jc_save_wfdc_flag=dc; _jc_save_fromStation=%u6DF1%u5733%2CSZQ; _jc_save_toStation=%u957F%u6C99%2CCSQ; _jc_save_fromDate=2020-01-20',
     set userCookie (value) {
         redisDb.set('userCookie', value);
         userCookie = value;
