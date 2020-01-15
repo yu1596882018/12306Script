@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./app.js",
     "loopCheckUser": "pm2 start ./scripts/loopCheckUser.js",
-    "pm2": "pm2 start ./app.js -i 4"
+    "pm2": "pm2 start ./app.js -i 2"
   },
   "author": "",
   "license": "ISC",
