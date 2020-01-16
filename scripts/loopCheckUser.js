@@ -71,8 +71,8 @@ const start = async () => {
             queryDate: '2020-02-02',
             fromCiteCode: 'SZQ',
             fromCiteText: '深圳',
-            toCiteCode: 'KAQ',
-            toCiteText: '怀化南'
+            toCiteCode: 'LHA',
+            toCiteText: '隆回'
         }
 
         // 查询
