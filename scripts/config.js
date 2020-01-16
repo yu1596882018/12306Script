@@ -50,6 +50,10 @@ module.exports = {
         {
             passengerTicketStr: ',0,1,何桂平,1,4311***********118,,N,a46903a2d3130dcc219d3390d6c0b3d792819454319703823ae8add0e76cc767',
             oldPassengerStr: '何桂平,1,4311***********118,1_'
+        },
+        {
+            passengerTicketStr: ',0,1,刘欢,1,3607***********125,,N,e3f3b17499fdd97e3ecfd7d244c52c5892a6122e95c6154941ce0b356795ff4d',
+            oldPassengerStr: '刘欢,1,3607***********125,1_'
         }
     ],
     codeImages: {},
@@ -57,7 +61,7 @@ module.exports = {
         intervalTime: 500,
         queryListParams: [
             {
-                userIndex: 4,
+                userIndex: 7,
                 isEnd: false,
                 queryDates: [
                     '2020-01-20',
