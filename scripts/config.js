@@ -58,6 +58,30 @@ module.exports = {
         queryListParams: [
             {
                 userIndex: 4,
+                isEnd: false,
+                queryDates: [
+                    '2020-01-20',
+                    '2020-01-21',
+                    '2020-01-22',
+                    '2020-01-23'
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'RJG',
+                        toCiteText: '瑞金'
+                    },
+                    {
+                        fromCode: 'XMS',
+                        fromCiteText: '厦门',
+                        toCode: 'RJG',
+                        toCiteText: '瑞金'
+                    }
+                ]
+            },
+            {
+                userIndex: 4,
                 isEnd: true,
                 queryDates: [
                     '2020-02-02',
@@ -118,7 +142,7 @@ module.exports = {
             },
             {
                 userIndex: 3,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-20',
                     '2020-01-21'
@@ -213,7 +237,7 @@ module.exports = {
             },
             {
                 userIndex: 4,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-17',
                     '2020-01-18'
