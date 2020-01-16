@@ -216,6 +216,16 @@ module.exports = {
                             'G403',
                             'G79'
                         ]*/
+                    },
+                    {
+                        fromCode: 'BJP',
+                        fromCiteText: '北京西',
+                        toCode: 'WHN',
+                        toCiteText: '武汉',
+                        scheduleTime: {
+                            startTime: '09:00',
+                            endTime: '21:00'
+                        }
                     }
                 ]
             },
