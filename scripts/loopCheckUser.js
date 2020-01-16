@@ -52,6 +52,9 @@ const start = async () => {
 
 const start = async () => {
     try {
+        if (new Date().getHours() < 6 || new Date().getHours() >= 23) {
+            return console.log('不再抢票时间！');
+        }
         await new Promise((resolve, reject) => {
             config.redisDb.get('userCookie', function (err, v) {
                 if (err) {
