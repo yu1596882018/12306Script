@@ -99,8 +99,11 @@
 
     document.getElementById('refresh').onclick = function (e) {
         var doms = document.getElementsByClassName('lgcode-active');
-        for (var i = 0; i < doms.length; i++) {
-            document.getElementById('J-passCodeCoin').removeChild(doms[i]);
+        var container = document.getElementById('J-passCodeCoin');
+        var dom = doms && doms[0];
+        while (dom) {
+            container.removeChild(dom);
+            dom = doms && doms[0];
         }
         axios({
             method: 'get',
