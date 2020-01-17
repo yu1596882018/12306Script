@@ -205,7 +205,7 @@ module.exports = {
             },
             {
                 userIndex: 5,
-                isEnd: true,
+                isEnd: false,
                 queryDates: [
                     '2020-01-20',
                     '2020-01-21',
@@ -228,7 +228,7 @@ module.exports = {
                         toCiteText: '武汉',
                         scheduleTime: {
                             startTime: '09:00',
-                            endTime: '21:00'
+                            endTime: '16:00'
                         }
                     }
                 ]
