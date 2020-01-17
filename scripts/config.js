@@ -62,7 +62,7 @@ module.exports = {
     ],
     codeImages: {},
     queryOptions: {
-        intervalTime: 500,
+        intervalTime: 1000,
         queryListParams: [
             {
                 userIndex: 8,
