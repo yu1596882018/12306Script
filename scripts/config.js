@@ -64,12 +64,16 @@ module.exports = {
                 userIndex: 7,
                 isEnd: false,
                 queryDates: [
-                    '2020-01-20',
                     '2020-01-21',
                     '2020-01-22',
-                    '2020-01-23'
                 ],
                 citeCodes: [
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'XMS',
+                        toCiteText: '厦门'
+                    },
                     {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
