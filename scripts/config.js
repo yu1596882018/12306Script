@@ -69,10 +69,170 @@ module.exports = {
                 isEnd: false,
                 queryDates: [
                     '2020-01-18',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                ]
+            },
+            {
+                userIndex: 8,
+                isEnd: false,
+                queryDates: [
                     '2020-01-19',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                ]
+            },
+            {
+                userIndex: 8,
+                isEnd: false,
+                queryDates: [
                     '2020-01-20',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                ]
+            },
+            {
+                userIndex: 8,
+                isEnd: false,
+                queryDates: [
                     '2020-01-21',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                ]
+            },
+            {
+                userIndex: 8,
+                isEnd: false,
+                queryDates: [
                     '2020-01-22',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                ]
+            },
+            {
+                userIndex: 8,
+                isEnd: false,
+                queryDates: [
                     '2020-01-23',
                 ],
                 citeCodes: [
@@ -83,14 +243,26 @@ module.exports = {
                         toCiteText: '武汉'
                     },
                     {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
+                    {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
                         toCode: 'WHN',
                         toCiteText: '武汉'
                     },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'QJN',
+                        toCiteText: '潜江'
+                    },
                 ]
             },
-            {
+            /*{
                 userIndex: 7,
                 isEnd: false,
                 queryDates: [
@@ -98,12 +270,12 @@ module.exports = {
                     '2020-01-22',
                 ],
                 citeCodes: [
-                    /*{
+                    /!*{
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
                         toCode: 'XMS',
                         toCiteText: '厦门'
-                    },*/
+                    },*!/
                     {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
@@ -160,7 +332,7 @@ module.exports = {
                         ]
                     }
                 ]
-            },
+            },*/
             {
                 userIndex: 4,
                 isEnd: true,
