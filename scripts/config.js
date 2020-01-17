@@ -89,23 +89,6 @@ module.exports = {
                 ]
             },
             {
-                userIndex: 4,
-                isEnd: true,
-                queryDates: [
-                    '2020-02-02',
-                    '2020-02-03',
-                ],
-                citeCodes: [
-                    {
-                        fromCode: 'KMM',
-                        fromCiteText: '昆明',
-                        toCode: 'SZQ',
-                        toCiteText: '深圳',
-                        seatType: ['O']
-                    }
-                ]
-            },
-            {
                 userIndex: 6,
                 isEnd: false,
                 queryDates: [
@@ -145,6 +128,23 @@ module.exports = {
                         checi: [
                             'G6173'
                         ]
+                    }
+                ]
+            },
+            {
+                userIndex: 4,
+                isEnd: true,
+                queryDates: [
+                    '2020-02-02',
+                    '2020-02-03',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'KMM',
+                        fromCiteText: '昆明',
+                        toCode: 'SZQ',
+                        toCiteText: '深圳',
+                        seatType: ['O']
                     }
                 ]
             },
