@@ -98,12 +98,12 @@ module.exports = {
                     '2020-01-22',
                 ],
                 citeCodes: [
-                    {
+                    /*{
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
                         toCode: 'XMS',
                         toCiteText: '厦门'
-                    },
+                    },*/
                     {
                         fromCode: 'SZQ',
                         fromCiteText: '深圳',
