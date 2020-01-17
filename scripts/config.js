@@ -54,12 +54,42 @@ module.exports = {
         {
             passengerTicketStr: ',0,1,刘欢,1,3607***********125,,N,e3f3b17499fdd97e3ecfd7d244c52c5892a6122e95c6154941ce0b356795ff4d',
             oldPassengerStr: '刘欢,1,3607***********125,1_'
+        },
+        {
+            passengerTicketStr: ',0,1,汪艳,1,4290***********307,,N,91ff4ac35718e294fb2207ff93693dce66274e99985e88474c6d8753ca9a01e3',
+            oldPassengerStr: '汪艳,1,4290***********307,1_'
         }
     ],
     codeImages: {},
     queryOptions: {
         intervalTime: 500,
         queryListParams: [
+            {
+                userIndex: 8,
+                isEnd: false,
+                queryDates: [
+                    '2020-01-18',
+                    '2020-01-19',
+                    '2020-01-20',
+                    '2020-01-21',
+                    '2020-01-22',
+                    '2020-01-23',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'GZQ',
+                        fromCiteText: '广州',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'WHN',
+                        toCiteText: '武汉'
+                    },
+                ]
+            },
             {
                 userIndex: 7,
                 isEnd: false,
