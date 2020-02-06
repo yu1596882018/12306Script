@@ -337,7 +337,10 @@ module.exports = {
                         toCode: 'SZQ',
                         toCiteText: '深圳',
                         fromCode: 'CSQ',
-                        fromCiteText: '长沙'
+                        fromCiteText: '长沙',
+                        scheduleTime: {
+                            startTime: '10:00',
+                        }
                     }
                 ]
             },
