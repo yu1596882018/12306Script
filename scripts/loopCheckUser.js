@@ -68,7 +68,7 @@ const start = async () => {
 
         const queryParams = {
             secretStr: '',
-            queryDate: '2020-02-02',
+            queryDate: moment().set('date', moment().get('date') + 7).format("YYYY-MM-DD"),
             fromCiteCode: 'SZQ',
             fromCiteText: '深圳',
             toCiteCode: 'LHA',
