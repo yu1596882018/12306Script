@@ -66,7 +66,7 @@ module.exports = {
         queryListParams: [
             {
                 userIndex: 8,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-19',
                 ],
@@ -99,7 +99,7 @@ module.exports = {
             },
             {
                 userIndex: 8,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-20',
                 ],
@@ -132,7 +132,7 @@ module.exports = {
             },
             {
                 userIndex: 8,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-21',
                 ],
@@ -165,7 +165,7 @@ module.exports = {
             },
             {
                 userIndex: 8,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-01-22',
                 ],
@@ -319,10 +319,12 @@ module.exports = {
             },
             {
                 userIndex: 3,
-                isEnd: true,
+                isEnd: false,
                 queryDates: [
-                    '2020-02-01',
-                    '2020-02-02',
+                    '2020-02-07',
+                    '2020-02-08',
+                    '2020-02-09',
+                    '2020-02-10',
                 ],
                 citeCodes: [
                     {
