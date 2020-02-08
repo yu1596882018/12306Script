@@ -76,7 +76,7 @@ const start = async () => {
         }
 
         // 查询
-        let queryZResult = await setHeaders(superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ'), queryCookie)
+        let queryZResult = await setHeaders(superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryO'), queryCookie)
             .query({
                 'leftTicketDTO.train_date': queryParams.queryDate,
                 'leftTicketDTO.from_station': queryParams.fromCiteCode,

@@ -25,8 +25,8 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
                             try {
                                 // 查询
                                 let queryZResult = await setHeaders((openProxy ?
-                                    superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ').proxy(proxyUrl) :
-                                    superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryZ')), queryCookie)
+                                    superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryO').proxy(proxyUrl) :
+                                    superagent.get('https://kyfw.12306.cn/otn/leftTicket/queryO')), queryCookie)
                                     .query({
                                         'leftTicketDTO.train_date': queryDate,
                                         'leftTicketDTO.from_station': queryOpt.fromCode,

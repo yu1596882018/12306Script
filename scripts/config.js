@@ -69,6 +69,26 @@ module.exports = {
         intervalTime: 500,
         queryListParams: [
             {
+                userIndex: 0,
+                isEnd: true,
+                queryDates: [
+                    '2020-02-10',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'SZQ',
+                        fromCiteText: '深圳',
+                        toCode: 'GZQ',
+                        toCiteText: '广州',
+                        scheduleToSiteCode: 'IZQ',
+                        scheduleTime: {
+                            startTime: '18:00',
+                            endTime: ''
+                        }
+                    }
+                ]
+            },
+            {
                 userIndex: 9,
                 isEnd: false,
                 queryDates: [
@@ -399,26 +419,6 @@ module.exports = {
                         scheduleTime: {
                             startTime: '09:00',
                             endTime: '16:00'
-                        }
-                    }
-                ]
-            },
-            {
-                userIndex: 0,
-                isEnd: true,
-                queryDates: [
-                    '2020-01-17',
-                ],
-                citeCodes: [
-                    {
-                        fromCode: 'SZQ',
-                        fromCiteText: '深圳',
-                        toCode: 'GZQ',
-                        toCiteText: '广州',
-                        scheduleToSiteCode: 'IZQ',
-                        scheduleTime: {
-                            startTime: '18:00',
-                            endTime: ''
                         }
                     }
                 ]
