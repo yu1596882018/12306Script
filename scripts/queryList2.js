@@ -71,7 +71,7 @@ module.exports = function ({queryListParams: QLP, intervalTime}) {
                     }
                 }, err => {
                     if (err.message !== '有') {
-                        setTimeout(queryFunc, 1 * 60 * 1000);
+                        setTimeout(queryFunc, 0.2 * 60 * 1000);
                     }
                     throw err;
                 });
