@@ -3,7 +3,7 @@ const localConfig = require('./localConfig');
 const redisDb = redis.createClient(6379, localConfig.redisHost);
 const redisPub = redis.createClient(6379, localConfig.redisHost);
 const redisSub = redis.createClient(6379, localConfig.redisHost);
-let userCookie = 'JSESSIONID=4A462CAF808B962E214BE5D966472AB3; tk=67oKDcGoKW2dBPX2_tc3WsEx_QuPsA0YQhLx2bc0erEgay1y0; route=9036359bb8a8a461c164a04f8f50b252; BIGipServerotn=1156055306.50210.0000; _jc_save_fromStation=%u6DF1%u5733%u5317%2CIOQ; _jc_save_toStation=%u9686%u56DE%2CLHA; _jc_save_toDate=2020-02-06; _jc_save_wfdc_flag=dc; RAIL_EXPIRATION=1581315940103; RAIL_DEVICEID=nWxI6bdTX3uD9q_rVvegqxogtVBfUHYDKwSAtpZuSRdm4avENLF4FmsB3MAe7nM-xgePLg2uVyzlIER1qe3Ohbd5SZGjvZZSsDTYtWR4RPSW3_VqHxQicWK45gZt5jQQmmpmSUW40E8-SxuYgVu58N1jQG9QE4Nv; BIGipServerpassport=786956554.50215.0000; _jc_save_fromDate=2020-02-06';
+let userCookie = '_uab_collina=157745159966575018197823; JSESSIONID=7B0D33004DC1C0A0704294C59B1E4DAE; tk=eys8gd8FcgrwPqa4mx2JmM9QLJSbetcFd2mjEzHv1l892y1y0; _jc_save_wfdc_flag=dc; RAIL_EXPIRATION=1581315940103; RAIL_DEVICEID=nWxI6bdTX3uD9q_rVvegqxogtVBfUHYDKwSAtpZuSRdm4avENLF4FmsB3MAe7nM-xgePLg2uVyzlIER1qe3Ohbd5SZGjvZZSsDTYtWR4RPSW3_VqHxQicWK45gZt5jQQmmpmSUW40E8-SxuYgVu58N1jQG9QE4Nv; BIGipServerotn=1944584458.50210.0000; BIGipServerpassport=904397066.50215.0000; route=6f50b51faa11b987e576cdb301e545c4; _jc_save_fromStation=%u90F4%u5DDE%2CCZQ; _jc_save_toStation=%u6DF1%u5733%2CSZQ; _jc_save_toDate=2020-02-08; _jc_save_fromDate=2020-02-10';
 
 redisDb.get('userCookie', function (err, v) {
     v && (userCookie = v);
@@ -58,12 +58,41 @@ module.exports = {
         {
             passengerTicketStr: ',0,1,汪艳,1,4290***********307,,N,91ff4ac35718e294fb2207ff93693dce66274e99985e88474c6d8753ca9a01e3',
             oldPassengerStr: '汪艳,1,4290***********307,1_'
+        },
+        {
+            passengerTicketStr: ',0,1,罗丽思,1,4310***********048,173****9117,N,dc74cb2067a549d10c6fe5b985e6d479cda4d6ba393a2e3b5e3b31c1e9769564f7897b1ebedf3fc3974351bef36d072e0927d2f3e2c13e33d6bc356ab25c632e',
+            oldPassengerStr: '罗丽思,1,4310***********048,1_'
         }
     ],
     codeImages: {},
     queryOptions: {
         intervalTime: 500,
         queryListParams: [
+            {
+                userIndex: 9,
+                isEnd: false,
+                queryDates: [
+                    '2020-02-10',
+                ],
+                citeCodes: [
+                    {
+                        fromCode: 'ICQ',
+                        fromCiteText: '郴州西',
+                        toCode: 'SZQ',
+                        toCiteText: '深圳'
+                    },
+                    {
+                        fromCode: 'ICQ',
+                        fromCiteText: '郴州西',
+                        toCode: 'GZQ',
+                        toCiteText: '广州',
+                        scheduleTime: {
+                            startTime: '09:00',
+                            endTime: '20:00'
+                        }
+                    }
+                ]
+            },
             {
                 userIndex: 8,
                 isEnd: true,
@@ -319,7 +348,7 @@ module.exports = {
             },
             {
                 userIndex: 3,
-                isEnd: false,
+                isEnd: true,
                 queryDates: [
                     '2020-02-07',
                     '2020-02-08',
