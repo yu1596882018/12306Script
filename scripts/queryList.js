@@ -15,20 +15,20 @@ module.exports = function ({ QLP: queryListParams, intervalTime }) {
     if (!Array.isArray(queryListParams)) {
         throw new Error('QLP（查询参数列表）必须为数组');
     }
-    let flag = false;
+    let stopFlag = false;
     const superagent = require('superagent');
     const setHeaders = require('./setHeaders');
     startFunc();
-    function startFunc() {
+    async function startFunc() {
         let pros = [];
         // 遍历所有日期和车站组合
-        queryListParams.forEach(param => {
+        for (const param of queryListParams) {
             const { queryDates, toCiteCodes, userIndex } = param;
-            queryDates.forEach(queryDate => {
-                toCiteCodes.forEach(async code => {
-                    pros.push(new Promise(async (resolve, reject) => {
+            for (const queryDate of queryDates) {
+                for (const code of toCiteCodes) {
+                    pros.push((async () => {
                         try {
-                            if (!flag) {
+                            if (!stopFlag) {
                                 const queryParams = {
                                     fromCiteCode: code.fromCode,
                                     toCiteCode: code.code,
@@ -53,7 +53,7 @@ module.exports = function ({ QLP: queryListParams, intervalTime }) {
                                     setTimeout(() => {
                                         console.log(queryParams.queryDate + '-' + code.fromCode + '-' + code.code + '有票', queryItem);
                                     }, 2000)
-                                    if (!flag) {
+                                    if (!stopFlag) {
                                         // 下单占位
                                         placeOrder({
                                             queryDate: queryParams.queryDate,
@@ -65,32 +65,28 @@ module.exports = function ({ QLP: queryListParams, intervalTime }) {
                                             userIndex: userIndex
                                         });
                                     }
-                                    flag = true;
+                                    stopFlag = true;
                                 }
-                                resolve();
-                            } else {
-                                console.log('结束');
-                                reject();
                             }
                         } catch (e) {
-                            reject(e);
+                            // 只做日志，不抛异常，保证主循环健壮
+                            console.error('查询异常', e);
                         }
-                    }));
-                });
-            });
-        });
+                    })());
+                }
+            }
+        }
         // 所有查询完成后，决定是否继续下一轮
-        Promise.all(pros).then(res => {
+        await Promise.allSettled(pros);
+        if (!stopFlag) {
             setTimeout(() => {
                 startFunc();
             }, intervalTime || 3000);
-        }, err => {
-            console.log('查询异常', err);
-        });
+        }
     }
     return {
         stop() {
-            flag = true;
+            stopFlag = true;
         }
     }
 }

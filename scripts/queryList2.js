@@ -16,21 +16,14 @@ const { openProxy, proxyUrl } = require('./localConfig');
  * @returns {Object} 控制对象
  */
 module.exports = function ({ queryListParams: QLP, intervalTime }) {
-    let isStopFlog = false;
-    QLP.forEach(item => {
-        if (!item.isEnd) {
-            queryFunc();
-            // 单个任务的循环查询函数
-            function queryFunc() {
-                // 非抢票时间段（6:00-23:00 以外）暂停查询
-                if (new Date().getHours() < 6 || new Date().getHours() >= 23) {
-                    return setTimeout(queryFunc, 60 * 60 * 1000);
-                }
-                let pros = [];
-                let hasOrder = false;
-                item.queryDates.forEach(queryDate => {
-                    item.citeCodes.forEach(queryOpt => {
-                        pros.push(new Promise(async (resolve, reject) => {
+    let stopFlag = false;
+    (async function mainLoop() {
+        let pros = [];
+        for (const item of QLP) {
+            if (!item.isEnd) {
+                for (const queryDate of item.queryDates) {
+                    for (const queryOpt of item.citeCodes) {
+                        pros.push((async () => {
                             try {
                                 // 查询余票
                                 let queryZResult = await setHeaders((openProxy ?
@@ -46,7 +39,7 @@ module.exports = function ({ queryListParams: QLP, intervalTime }) {
                                 let resultItem = filterItem(queryZResult.body.data.result, queryOpt);
                                 if (resultItem) {
                                     console.log('有票', `${queryDate}-${queryOpt.fromCiteText}-${queryOpt.toCiteText}`);
-                                    if (!item.isEnd && !hasOrder) {
+                                    if (!item.isEnd) {
                                         let citeMap = queryZResult.body.data.map;
                                         // 自动下单
                                         placeOrder({
@@ -58,38 +51,29 @@ module.exports = function ({ queryListParams: QLP, intervalTime }) {
                                             secretStr: resultItem.data[0],
                                             userIndex: item.userIndex
                                         }, item);
-                                        hasOrder = true;
                                     }
                                     // 有票后本轮终止
-                                    reject(new Error('有'));
+                                    stopFlag = true;
                                 } else {
                                     console.log('无票', `${queryDate}-${queryOpt.fromCiteText}-${queryOpt.toCiteText}`);
-                                    resolve('无');
                                 }
                             } catch (e) {
-                                reject(e);
-                                throw e;
+                                // 只做日志，不抛异常，保证主循环健壮
+                                console.error('查询异常', e);
                             }
-                        }));
-                    });
-                });
-                // 所有查询完成后，决定是否继续下一轮
-                Promise.all(pros).then(res => {
-                    if (!isStopFlog) {
-                        setTimeout(queryFunc, intervalTime || 5000);
+                        })());
                     }
-                }, err => {
-                    if (err.message !== '有') {
-                        setTimeout(queryFunc, 0.2 * 60 * 1000);
-                    }
-                    throw err;
-                });
+                }
             }
         }
-    });
+        await Promise.allSettled(pros);
+        if (!stopFlag) {
+            setTimeout(mainLoop, intervalTime || 5000);
+        }
+    })();
     return {
         stop() {
-            isStopFlog = true;
+            stopFlag = true;
         }
     }
 }
@@ -169,3 +153,4 @@ function filterItem(data, queryOpt = {}) {
     }
     return item;
 }
+
